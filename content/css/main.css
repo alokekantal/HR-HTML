@@ -1,0 +1,270 @@
+/* Space out content a bit */
+body {
+    padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    /*margin-bottom: 30px;*/
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+.nav>li.active>a {
+text-decoration: none;
+background-color: #eee;
+}
+
+
+.auto {cursor: auto !important;}
+.not-allowed {cursor: not-allowed !important;}
+.pointer {cursor: pointer !important;}
+
+.the-legend {
+    border-style: none;
+    border-width: 0;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 0;
+    width: auto;
+    padding: 0 10px;
+    border: 1px solid #337ab7;
+    border-radius: 4px;
+    background-color: #337ab7;
+    color: white;
+}
+.the-fieldset {
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.row-margin{
+  margin: 0px;
+}
+
+/*attendance grid :start*/
+.handpointer {
+
+    cursor:pointer;
+}
+.responsive-table {
+  color: #000;
+  overflow: hidden;
+  width:100%;
+  border-radius: 5px;
+  background-color:#eaebee;
+}
+.responsive-table tr {
+      border-bottom: 1px solid #dcdfe5;
+}
+.responsive-table th,.responsive-table td {
+    padding-left: 15px !important;
+}
+
+.responsive-table tr:last-child {
+    border-bottom: 0px;
+}
+a:focus {
+  -moz-outline-style: none;
+}
+
+a, a:active, a:focus {
+outline: none;
+}
+
+.bgOrg {
+    background-color:#337ab7;
+    color:#fff;
+}
+/*attendance grid :end*/
+
+/*calecder start*/
+ .border-box {
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+    }
+    
+    calendar {
+      float: left;
+      display: block;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      background: white;
+      width: 100%;
+      border: solid 1px #cccccc;
+      margin-bottom: 10px;
+    }
+    
+    calendar > div.header {
+      float: left;
+      width: 100%;
+      background: #2875c7;
+      height: 40px;
+      color: white;
+    }
+    
+    calendar > div.header > * {
+      height: 40px;
+      line-height: 40px !important;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    
+    calendar > div.header > i {
+      float: left;
+      width: 40px;
+      font-size: 1.125em;
+      font-weight: bold;
+      position: relative;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      padding: 0 10px;
+      cursor: pointer;
+    }
+    
+    calendar > div.header > i.fa-angle-left {
+      text-align: left;
+    }
+    
+    calendar > div.header > i.fa-angle-right {
+      text-align: right;
+      margin-left: -40px;
+    }
+    
+    calendar > div.header > span {
+      float: left;
+      width: 100%;
+      font-weight: bold;
+      text-transform: uppercase;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      padding-left: 50px;
+      margin-left: -40px;
+      text-align: center;
+      padding-right: 40px;
+      color: inherit;
+    }
+    
+    calendar > div.week {
+      float: left;
+      width: 100%;
+      border-top: solid 1px #cccccc;
+    }
+    
+    calendar > div.week:first-child {
+      border-top: none;
+    }
+    
+    calendar > div.week > span.day {
+      float: left;
+      width: 14.28571429%;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      border-left: solid 1px #cccccc;
+      font-size: 0.75em;
+      text-align: center;
+      height: 30px;
+      line-height: 30px;
+      display: inline-block;
+      vertical-align: middle;
+      background: white;
+      cursor: pointer;
+      color: black;
+    }
+
+  calendar .day-height{
+    height: 50px !important;
+      line-height: 25px !important;
+  }
+
+    
+    calendar > div.week > span.day:first-child {
+      border-left: none;
+    }
+    
+    calendar > div.week > span.day.today {
+      background: #E3F2FF;
+    }
+    
+    calendar > div.week > span.day.different-month {
+      color: #C0C0C0;
+    }
+    
+    calendar > div.week > span.day.selected {
+      /*background: #2875c7;
+      color: white;*/
+    }
+    
+    calendar > div.week.names > span {
+      color: #2875c7;
+      font-weight: bold;
+    }
+/*calender end*/

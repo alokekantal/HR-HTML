@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="employeeApp">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title>Employee Tracker</title>
+      <!-- CSS -->
+      <link rel="stylesheet" href="../content/vendor-css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../content/vendor-css/metisMenu.min.css" />
+      <link rel="stylesheet" href="../content/css/main.css">
+      <link rel="stylesheet" href="../content/css/sb-admin-2.css">
+      <link rel="stylesheet" href="../content/css/angular-moment-picker.min.css">
+      <link rel="stylesheet" href="../content/vendor-css/font-awesome.min.css" />
+      <link rel="stylesheet" href="../content/vendor-css/nv.d3.min.css" />
+      <link rel="stylesheet" href="../content/css/animate.css" />
+      <link rel="stylesheet" href="../content/css/loading-bars.css" />
+      <link rel="stylesheet" href="../content/vendor-css/footable.core.min.css" />
+   </head>
+   <body>
+      <!-- Simple splash screen-->
+      <div class="splash">
+         <div class="color-line"></div>
+         <div class="splash-title">
+            <h1>Employee Tracker</h1>
+            <img src="../content/images/loading-bars.svg" width="64" height="64" />
+         </div>
+      </div>
+      <div id="wrapper">
+         <!-- Navigation Area -->
+         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <!-- navbar-header -->
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="index.html">Employee Tracker</a>
+            </div>
+            <!-- /.navbar-header -->
+            <!-- navbar-top-links -->
+            <ul class="nav navbar-top-links navbar-right">
+               <!-- dropdown envelope icon -->
+               <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                  </a>
+                  <!-- dropdown-messages -->
+                  <ul class="dropdown-menu dropdown-messages">
+                     <li>
+                        <div class="text-center small">
+                           <strong>You have 4 tutorials</strong>
+                        </div>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a href="http://www.cc28tech.com/employee-tracker-angularjs-web-api-part-1" target="_blank">
+                           <div class="small">
+                              <strong>Part 1: </strong>
+                              <span class="text-info">
+                              Create a Web API Application in C#
+                              </span>
+                           </div>
+                        </a>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a href="http://www.cc28tech.com/employee-tracker-angularjs-web-api-part-2" target="_blank">
+                           <div class="small">
+                              <strong>Part 2: </strong>
+                              <span class="text-info">
+                              Create Web API Services
+                              </span>
+                           </div>
+                        </a>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a href="http://www.cc28tech.com/employee-tracker-angularjs-web-api-part-3" target="_blank">
+                           <div class="small">
+                              <strong>Part 3: </strong>
+                              <span class="text-info">
+                              Create a SPA in AngularJS
+                              </span>
+                           </div>
+                        </a>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a href="http://www.cc28tech.com/employee-tracker-angularjs-web-api-part-4" target="_blank">
+                           <div class="small">
+                              <strong>Part 4: </strong>
+                              <span class="text-info">
+                              Create Features in AngularJS
+                              </span>
+                           </div>
+                        </a>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a class="text-center text-info small" href="http://www.cc28tech.com" target="_blank">
+                           <div class="text-info">
+                              <strong>See Other Tutorials</strong>
+                           </div>
+                        </a>
+                     </li>
+                  </ul>
+                  <!-- /.dropdown-messages -->
+               </li>
+               <!-- /.dropdown envelope icon -->
+               <!-- dropdown user icon -->
+               <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                  </a>
+                  <!-- dropdown-user -->
+                  <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="../login/login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                  </ul>
+                  <!-- /.dropdown-user -->
+               </li>
+               <!-- /.dropdown user icon -->
+            </ul>
+            <!-- /.navbar-top-links -->
+            <!-- navbar-static-side -->
+            <div class="navbar-default sidebar" role="navigation">
+               <!-- sidebar-collapse -->
+               <div class="sidebar-nav navbar-collapse">
+                  <ul class="nav" id="side-menu">
+                     <li ui-sref-active="active">
+                        <a href="../dashboard/dashboard.html">
+                        <i class="fa fa-dashboard"></i>
+                        <span class="nav-label">Dashboard</span>
+                        </a>
+                     </li>
+                     <li ui-sref-active="active" class="active">
+                        <a href="../employee/employee.html">
+                        <i class="fa fa-table"></i>
+                        <span class="nav-label">Employees</span>
+                        </a>
+                     </li>
+                     <li ui-sref-active="active">
+                        <a href="../attendance/attendance.html">
+                        <i class="fa fa-check"></i>
+                        <span class="nav-label">Attendance</span>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+               <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+         </nav>
+         <!-- End Navigation Area -->
+         <!-- Content Area -->
+         <!-- ng-class with current state name give you the ability to extended customization your view -->
+         <div id="page-wrapper" class="gray-bg {{$state.current.name}}">
+            <!-- Nested view  -->
+            <div class="template animated slideInRight" ng-controller="addEditEmployeeController as vm">
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <h2>Add / Edit Employee</h2>
+                     <ol class="breadcrumb">
+                        <li><a ui-sref="home.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                        <li class="active"><i class="fa fa-table"></i> {{vm.title}}</li>
+                     </ol>
+                  </div>
+               </div>
+               <!-- /.row -->
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <fieldset class="the-fieldset">
+                        <legend class="the-legend">Personal Detail</legend>
+                        <form class="form-horizontal" role="form">
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">First Name:</label>
+                              <div class="col-sm-2 col-xs-10">
+                                 <select class="form-control">
+                                    <option>Mr</option>
+                                    <option>Ms</option>
+                                    <option>Mrs</option>
+                                    <option>5</option>
+                                 </select>
+                              </div>
+                              <div class="col-sm-4 col-xs-12">
+                                 <input type="text" class="form-control" placeholder="First Name">
+                              </div>
+                              <div class="col-sm-4 col-xs-12">
+                                 <input type="text" class="form-control" placeholder="Last Name">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">Father`s Name/Husband Name:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Father`s Name/Husband Name">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">Designation:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Designation">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">D.O.B.:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <div class="input-group"
+                                    moment-picker="dob"
+                                    start-view="month"
+                                    format="DD-MM-YYYY">
+                                    <span class="input-group-addon">
+                                    <i class="fa fa-calendar fa-fw"></i>
+                                    </span>
+                                    <input class="form-control"
+                                       placeholder="Select a date"
+                                       ng-model="dob"
+                                       ng-model-options="{ updateOn: 'blur' }">
+                                 </div>
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">Blood Group:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <select class="form-control">
+                                    <option>A+</option>
+                                    <option>A-</option>
+                                    <option>B+</option>
+                                    <option>B-</option>
+                                    <option>AB+</option>
+                                    <option>AB-</option>
+                                    <option>O+</option>
+                                    <option>O-</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">Gender:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <label class="radio-inline">
+                                 <input type="radio" name="gender" id="gender1" value="male">Male
+                                 </label>
+                                 <label class="radio-inline">
+                                 <input type="radio" name="gender" id="gender2" value="female">Female
+                                 </label>
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">Marital Status:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <label class="radio-inline">
+                                 <input type="radio" name="maritalStatus" value="male">Married
+                                 </label>
+                                 <label class="radio-inline">
+                                 <input type="radio" name="maritalStatus" value="female">Single
+                                 </label>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">Sub Function:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Sub Function">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">Process:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Process">
+                              </div>
+                           </div>
+                        </form>
+                     </fieldset>
+                     <fieldset class="the-fieldset" style="margin-top: 20px;">
+                        <legend class="the-legend">Contact Detail</legend>
+                        <form class="form-horizontal" role="form">
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label"> Address 1:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Address 1">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label"> Address 2:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder=" Address 2">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label"> City/Dist:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="City/Dist">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label"> PIN Code:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="PIN Code">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">Contact No.:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Contact No">
+                              </div>
+                           </div>
+                        </form>
+                     </fieldset>
+                     <fieldset class="the-fieldset" style="margin-top: 20px;">
+                        <legend class="the-legend">Other Detail</legend>
+                        <form class="form-horizontal" role="form">
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label"> Interview Date:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <div class="input-group"
+                                    moment-picker="interviewDate"
+                                    start-view="month"
+                                    format="DD-MM-YYYY">
+                                    <span class="input-group-addon">
+                                    <i class="fa fa-calendar fa-fw"></i>
+                                    </span>
+                                    <input class="form-control"
+                                       placeholder="Select a date"
+                                       ng-model="interviewDate"
+                                       ng-model-options="{ updateOn: 'blur' }">
+                                 </div>
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">Joining date:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <div class="input-group"
+                                    moment-picker="joiningDate"
+                                    start-view="month"
+                                    format="DD-MM-YYYY">
+                                    <span class="input-group-addon">
+                                    <i class="fa fa-calendar fa-fw"></i>
+                                    </span>
+                                    <input class="form-control"
+                                       placeholder="Select a date"
+                                       ng-model="joiningDate"
+                                       ng-model-options="{ updateOn: 'blur' }">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">Probation Upto:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Probation Upto">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">Period:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Period">
+                              </div>
+                           </div>
+                        </form>
+                     </fieldset>
+                     <fieldset class="the-fieldset" style="margin-top: 20px;">
+                        <legend class="the-legend">Salary Detail</legend>
+                        <form class="form-horizontal" role="form">
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">Gross Salary:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Gross Salary">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">Basic:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Basic">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">16114:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="16114">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">Con.:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Con.">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">Education Allowance:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Education Allowance">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">Spl. Allowance:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Spl. Allowance">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">Upkeep Allowance:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Upkeep Allowance">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">Dif If Any:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Dif If Any">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">EPF 12 % of Basic Salary:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="EPF 12 % of Basic Salary">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">ESIC 1.75% of Gross Salary:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="ESIC 1.75% of Gross Salary">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">W.B. Proff_tax:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="W.B. Proff_tax">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">Tot_ded:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Tot_ded">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">Take Home Salary:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Take Home Salary">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">Mobile /Travel Reimbursement(Optional):</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Mobile /Travel Reimbursement(Optional)">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">Take Home with  Mobile Re.:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Take Home with  Mobile Re.">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">CO'S CONT. TO PF:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="CO'S CONT. TO PF">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">Pension Fund:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Pension Fund">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">EDLI:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="EDLI">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">ADM CH:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="ADM CH">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">ADM TO EDLI:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="ADM TO EDLI">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">EPF 13.16% of Basic Salary:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="EPF 13.16% of Basic Salary">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">ESIC 4.75% of Gross Salary:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="ESIC 4.75% of Gross Salary">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">Cost to company Per Month:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Cost to company Per Month">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">Annual CTC:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Annual CTC">
+                              </div>
+                           </div>
+                        </form>
+                     </fieldset>
+                     <fieldset class="the-fieldset" style="margin-top: 20px;">
+                        <legend class="the-legend">Bank Detail & Other</legend>
+                        <form class="form-horizontal" role="form">
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">PAN Number:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="PAN Number">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">Aadhar Card Number:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Aadhar Card Number">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">Voter Id Card Number:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="Voter Id Card Number">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">A/C Number:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="A/C Number">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">IFSC Code:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <input type="text" class="form-control" placeholder="IFSC Code">
+                              </div>
+                              <label class="col-sm-2 col-xs-2 control-label">Resignation Date:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <div class="input-group"
+                                    moment-picker="resignationDate"
+                                    start-view="month"
+                                    format="DD-MM-YYYY">
+                                    <span class="input-group-addon">
+                                    <i class="fa fa-calendar fa-fw"></i>
+                                    </span>
+                                    <input class="form-control"
+                                       placeholder="Select a date"
+                                       ng-model="resignationDate"
+                                       ng-model-options="{ updateOn: 'blur' }">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-sm-2 col-xs-2 control-label">Relieving Dated:</label>
+                              <div class="col-sm-4 col-xs-10">
+                                 <div class="input-group"
+                                    moment-picker="relievingDated"
+                                    start-view="month"
+                                    format="DD-MM-YYYY">
+                                    <span class="input-group-addon">
+                                    <i class="fa fa-calendar fa-fw"></i>
+                                    </span>
+                                    <input class="form-control"
+                                       placeholder="Select a date"
+                                       ng-model="relievingDated"
+                                       ng-model-options="{ updateOn: 'blur' }">
+                                 </div>
+                              </div>
+                           </div>
+                        </form>
+                     </fieldset>
+                     <div style="margin-top: 20px;">
+                        <button type="button" class="btn btn-primary  pull-right">
+                        <i class="fa fa-save"></i> Save
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- End Content Area -->
+      </div>
+      <script src="../content/js/jquery.min.js"></script>
+      <script src="../content/js/bootstrap.min.js"></script>
+      <script src="../content/js/metisMenu.min.js"></script>
+      <script src="../content/js/angular.min.js"></script>
+      <script src="../content/js/angular-ui-router.min.js"></script>
+      <script src="../content/js/d3.min.js"></script>
+      <script src="../content/js/nv.d3.min.js"></script>
+      <script src="../content/js/angular-nvd3.min.js"></script>
+      <script src="../content/js/moment.min.js"></script>
+      <script src="../content/js/footable.all.min.js"></script>
+      <script src="../content/js/angular-footable.min.js"></script>
+      <script src="../content/js/sb-admin-2.js"></script>
+      <script src="../content/js/moment-with-locales.js"></script>
+      <script src="../content/js/angular-moment-picker.min.js"></script>
+      <!--<script src="../layout/layout.module.js"></script>
+      <script src="../layout/layout.controller.js"></script>-->
+      <script src="../content/js/loading-bars.js"></script>
+
+      <script src="../layout/shell.controller.js"></script>
+      <script src="addEmployee.controller.js"></script>
+      <script src="addEmployee.service.js"></script>
+      
+   </body>
+</html>

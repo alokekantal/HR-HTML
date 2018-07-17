@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="employeeApp">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title>Employee Tracker</title>
+      <!-- CSS -->
+      <link rel="stylesheet" href="../content/vendor-css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../content/vendor-css/metisMenu.min.css" />
+      <link rel="stylesheet" href="../content/css/main.css">
+      <link rel="stylesheet" href="../content/css/sb-admin-2.css">
+      <link rel="stylesheet" href="../content/css/angular-moment-picker.min.css">
+      <link rel="stylesheet" href="../content/vendor-css/font-awesome.min.css" />
+      <link rel="stylesheet" href="../content/vendor-css/nv.d3.min.css" />
+      <link rel="stylesheet" href="../content/css/animate.css" />
+      <link rel="stylesheet" href="../content/css/loading-bars.css" />
+      <link rel="stylesheet" href="../content/vendor-css/footable.core.min.css" />
+   </head>
+   <body>
+      <!-- Simple splash screen-->
+      <div class="splash">
+         <div class="color-line"></div>
+         <div class="splash-title">
+            <h1>Employee Tracker</h1>
+            <img src="../content/images/loading-bars.svg" width="64" height="64" />
+         </div>
+      </div>
+      <div id="wrapper">
+         <!-- Navigation Area -->
+         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <!-- navbar-header -->
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="index.html">Employee Tracker</a>
+            </div>
+            <!-- /.navbar-header -->
+            <!-- navbar-top-links -->
+            <ul class="nav navbar-top-links navbar-right">
+               <!-- dropdown envelope icon -->
+               <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                  </a>
+                  <!-- dropdown-messages -->
+                  <ul class="dropdown-menu dropdown-messages">
+                     <li>
+                        <div class="text-center small">
+                           <strong>You have 4 tutorials</strong>
+                        </div>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a href="http://www.cc28tech.com/employee-tracker-angularjs-web-api-part-1" target="_blank">
+                           <div class="small">
+                              <strong>Part 1: </strong>
+                              <span class="text-info">
+                              Create a Web API Application in C#
+                              </span>
+                           </div>
+                        </a>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a href="http://www.cc28tech.com/employee-tracker-angularjs-web-api-part-2" target="_blank">
+                           <div class="small">
+                              <strong>Part 2: </strong>
+                              <span class="text-info">
+                              Create Web API Services
+                              </span>
+                           </div>
+                        </a>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a href="http://www.cc28tech.com/employee-tracker-angularjs-web-api-part-3" target="_blank">
+                           <div class="small">
+                              <strong>Part 3: </strong>
+                              <span class="text-info">
+                              Create a SPA in AngularJS
+                              </span>
+                           </div>
+                        </a>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a href="http://www.cc28tech.com/employee-tracker-angularjs-web-api-part-4" target="_blank">
+                           <div class="small">
+                              <strong>Part 4: </strong>
+                              <span class="text-info">
+                              Create Features in AngularJS
+                              </span>
+                           </div>
+                        </a>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a class="text-center text-info small" href="http://www.cc28tech.com" target="_blank">
+                           <div class="text-info">
+                              <strong>See Other Tutorials</strong>
+                           </div>
+                        </a>
+                     </li>
+                  </ul>
+                  <!-- /.dropdown-messages -->
+               </li>
+               <!-- /.dropdown envelope icon -->
+               <!-- dropdown user icon -->
+               <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                  </a>
+                  <!-- dropdown-user -->
+                  <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="../login/login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+                  <!-- /.dropdown-user -->
+               </li>
+               <!-- /.dropdown user icon -->
+            </ul>
+            <!-- /.navbar-top-links -->
+            <!-- navbar-static-side -->
+            <div class="navbar-default sidebar" role="navigation">
+               <!-- sidebar-collapse -->
+               <div class="sidebar-nav navbar-collapse">
+                  <ul class="nav" id="side-menu">
+                     <li ui-sref-active="active" class="active">
+                        <a href="#">
+                        <i class="fa fa-dashboard"></i>
+                        <span class="nav-label">Dashboard</span>
+                        </a>
+                     </li>
+                     <li ui-sref-active="active">
+                        <a href="../employee/employee.html">
+                        <i class="fa fa-table"></i>
+                        <span class="nav-label">Employees</span>
+                        </a>
+                     </li>
+                     <li ui-sref-active="active">
+                        <a href="../attendance/attendance.html">
+                        <i class="fa fa-check"></i>
+                        <span class="nav-label">Attendance</span>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+               <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+         </nav>
+         <!-- End Navigation Area -->
+         <!-- Content Area -->
+         <!-- ng-class with current state name give you the ability to extended customization your view -->
+         <div id="page-wrapper" class="gray-bg {{$state.current.name}}">
+            <!-- Nested view  -->
+            
+            <div class="template animated slideInRight" ng-controller="DashboardController as vm">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>{{vm.title}}</h1>
+            <ol class="breadcrumb">
+                <li class="active"><i class="fa fa-dashboard"></i> {{vm.title}}</li>
+            </ol>
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <i class="fa fa-info-circle"></i><strong> Like Employee Tracker?</strong> Make sure you check out other tutorials in <a class="alert-link" href="http://cc28tech.com" target="_blank">Cathy Wun's Blog</a>!
+            </div>
+        </div>
+    </div><!-- /.row -->
+ 
+    <div class="row">
+        <!-- Total Positions Area -->
+        <div class="col-md-4 col-lg-4">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <i class="fa fa-briefcase fa-5x"></i>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <p class="announcement-heading">{{vm.positions}}</p>
+                            <p class="announcement-text">Total Positions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Total Positions Area -->
+        <!-- Total Offices Area -->
+        <div class="col-md-4 col-lg-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <i class="fa fa-university fa-5x"></i>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <p class="announcement-heading">{{vm.offices}}</p>
+                            <p class="announcement-text">Total Offices</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Total Offices Area -->
+        <!-- Total Employees Area -->
+        <div class="col-md-4 col-lg-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <i class="fa fa-users fa-5x"></i>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <p class="announcement-heading">{{vm.employees}}</p>
+                            <p class="announcement-text">Total Employees</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Total Employees Area -->
+    </div><!-- /.row -->
+ 
+    <div class="row">
+        <!-- Bar chart of Historical Growth Statistics Area -->
+        <div class="col-lg-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Historial Growth Statistics</h3>
+                </div>
+                <div class="panel-body">
+                    <nvd3 options="vm.lineChartOptions" data="vm.lineChartData"></nvd3>
+                </div>
+            </div>
+        </div>
+        <!-- End Bar chart of Historical Growth Statistics Area -->
+        <!-- Pie chart of Office Statistics Area -->
+        <div class="col-lg-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Offices Statistics</h3>
+                </div>
+                <div class="panel-body">
+                    <nvd3 options="vm.pieChartOptions" data="vm.pieChartData"></nvd3>
+                </div>
+            </div>
+        </div>
+        <!-- End Pie chart of Office Statistics Area -->
+    </div><!-- /.row -->
+</div>
+         </div>
+         <!-- End Content Area -->
+      </div>
+      <script src="../content/js/jquery.min.js"></script>
+      <script src="../content/js/bootstrap.min.js"></script>
+      <script src="../content/js/metisMenu.min.js"></script>
+      <script src="../content/js/angular.min.js"></script>
+      <script src="../content/js/angular-ui-router.min.js"></script>
+      <script src="../content/js/d3.min.js"></script>
+      <script src="../content/js/nv.d3.min.js"></script>
+      <script src="../content/js/angular-nvd3.min.js"></script>
+      <script src="../content/js/moment.min.js"></script>
+      <script src="../content/js/footable.all.min.js"></script>
+      <script src="../content/js/angular-footable.min.js"></script>
+      <script src="../content/js/sb-admin-2.js"></script>
+      <script src="../content/js/moment-with-locales.js"></script>
+      <script src="../content/js/angular-moment-picker.min.js"></script>
+      <script src="../layout/layout.module.js"></script>
+      <script src="../layout/shell.controller.js"></script>
+      <script src="dashboard.controller.js"></script>
+    <script src="dashboard.service.js"></script>
+      <script src="../content/js/loading-bars.js"></script>
+   </body>
+</html>

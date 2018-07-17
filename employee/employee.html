@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="employeeApp">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title>Employee Tracker</title>
+      <!-- CSS -->
+      <link rel="stylesheet" href="../content/vendor-css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../content/vendor-css/metisMenu.min.css" />
+      <link rel="stylesheet" href="../content/css/main.css">
+      <link rel="stylesheet" href="../content/css/sb-admin-2.css">
+      <link rel="stylesheet" href="../content/css/angular-moment-picker.min.css">
+      <link rel="stylesheet" href="../content/vendor-css/font-awesome.min.css" />
+      <link rel="stylesheet" href="../content/vendor-css/nv.d3.min.css" />
+      <link rel="stylesheet" href="../content/css/animate.css" />
+      <link rel="stylesheet" href="../content/css/loading-bars.css" />
+      <link rel="stylesheet" href="../content/vendor-css/footable.core.min.css" />
+   </head>
+   <body>
+      <!-- Simple splash screen-->
+      <div class="splash">
+         <div class="color-line"></div>
+         <div class="splash-title">
+            <h1>Employee Tracker</h1>
+            <img src="../content/images/loading-bars.svg" width="64" height="64" />
+         </div>
+      </div>
+      <div id="wrapper">
+         <!-- Navigation Area -->
+         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <!-- navbar-header -->
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="index.html">Employee Tracker</a>
+            </div>
+            <!-- /.navbar-header -->
+            <!-- navbar-top-links -->
+            <ul class="nav navbar-top-links navbar-right">
+               <!-- dropdown envelope icon -->
+               <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                  </a>
+                  <!-- dropdown-messages -->
+                  <ul class="dropdown-menu dropdown-messages">
+                     <li>
+                        <div class="text-center small">
+                           <strong>You have 4 tutorials</strong>
+                        </div>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a href="#" target="_blank">
+                           <div class="small">
+                              <strong>Part 1: </strong>
+                              <span class="text-info">
+                              Create a Web API Application in C#
+                              </span>
+                           </div>
+                        </a>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a href="#" target="_blank">
+                           <div class="small">
+                              <strong>Part 2: </strong>
+                              <span class="text-info">
+                              Create Web API Services
+                              </span>
+                           </div>
+                        </a>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a href="#" target="_blank">
+                           <div class="small">
+                              <strong>Part 3: </strong>
+                              <span class="text-info">
+                              Create a SPA in AngularJS
+                              </span>
+                           </div>
+                        </a>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a href="#" target="_blank">
+                           <div class="small">
+                              <strong>Part 4: </strong>
+                              <span class="text-info">
+                              Create Features in AngularJS
+                              </span>
+                           </div>
+                        </a>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a class="text-center text-info small" href="#" target="_blank">
+                           <div class="text-info">
+                              <strong>See Other Tutorials</strong>
+                           </div>
+                        </a>
+                     </li>
+                  </ul>
+                  <!-- /.dropdown-messages -->
+               </li>
+               <!-- /.dropdown envelope icon -->
+               <!-- dropdown user icon -->
+               <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                  </a>
+                  <!-- dropdown-user -->
+                  <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="../login/login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+                  <!-- /.dropdown-user -->
+               </li>
+               <!-- /.dropdown user icon -->
+            </ul>
+            <!-- /.navbar-top-links -->
+            <!-- navbar-static-side -->
+            <div class="navbar-default sidebar" role="navigation">
+               <!-- sidebar-collapse -->
+               <div class="sidebar-nav navbar-collapse">
+                  <ul class="nav" id="side-menu">
+                     <li ui-sref-active="active">
+                        <a href="../dashboard/dashboard.html">
+                        <i class="fa fa-dashboard"></i>
+                        <span class="nav-label">Dashboard</span>
+                        </a>
+                     </li>
+                     <li ui-sref-active="active" class="active">
+                        <a href="#">
+                        <i class="fa fa-table"></i>
+                        <span class="nav-label">Employees</span>
+                        </a>
+                     </li>
+                     <li ui-sref-active="active">
+                        <a href="../attendance/attendance.html">
+                        <i class="fa fa-check"></i>
+                        <span class="nav-label">Attendance</span>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+               <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+         </nav>
+         <!-- End Navigation Area -->
+         <!-- Content Area -->
+         <!-- ng-class with current state name give you the ability to extended customization your view -->
+         <div id="page-wrapper" class="gray-bg {{$state.current.name}}">
+            <!-- Nested view  -->
+            <div class="template animated slideInRight" ng-controller="EmployeeController as vm">
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <h2>Employees</h2>
+                     <ol class="breadcrumb">
+                        <li><a ui-sref="home.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                        <li class="active"><i class="fa fa-table"></i> {{vm.title}}</li>
+                     </ol>
+                  </div>
+               </div>
+               <!-- /.row -->
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom: 5px;margin-top: -15px;"> 
+                     <button ng-click="vm.addEmployee()" type="button" class="btn btn-primary pull-right">Add Employee</button>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <div class="dataTable_wrapper">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                           <thead>
+                              <tr>
+                                 <th>Emp Code</th>
+                                 <th>Name</th>
+                                 <th>Designation</th>
+                                 <th>D.O.B.</th>
+                                 <th>Process</th>
+                                 <th>Status</th>
+                                 <th>Action</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr class="odd gradeX">
+                                 <td>EMP001</td>
+                                 <td>Mr. Nitin biswas</td>
+                                 <td>Relationship Manager</td>
+                                 <td>25-July-1991</td>
+                                 <td>Unicef_Pune</td>
+                                 <td>Active</td>
+                                 <td>
+                                    <a ui-sref="#" data-toggle="modal" data-target="#employeePreview" class="pointer"><i class="fa fa-eye fa-fw"></i></a>
+                                    <a href="../addEmployee/addEmployee.html" class="pointer"><i class="fa fa-pencil fa-fw"></i></a>
+                                    <a ui-sref="#" class="pointer"><i class="fa fa-trash-o fa-fw"></i></a>
+                                 </td>
+                              </tr>
+                              <tr class="even gradeC">
+                                 <td>EMP002</td>
+                                 <td>Mr. Titus Sukesh</td>
+                                 <td>Relationship Manager</td>
+                                 <td>25-August-1991</td>
+                                 <td>chennai</td>
+                                 <td>Active</td>
+                                 <td>
+                                    <a ui-sref="#" data-toggle="modal" data-target="#employeePreview" class="pointer"><i class="fa fa-eye fa-fw"></i></a>
+                                    <a href="../addEmployee/addEmployee.html" class="pointer"><i class="fa fa-pencil fa-fw"></i></a>
+                                    <a ui-sref="" class="pointer"><i class="fa fa-trash-o fa-fw"></i></a>
+                                 </td>
+                              </tr>
+                              <tr class="odd gradeX">
+                                 <td>EMP003</td>
+                                 <td>Mr. Shree Harsha</td>
+                                 <td>Marketing Manager</td>
+                                 <td>25-June-1991</td>
+                                 <td>Unicef_Bangalore</td>
+                                 <td>Active</td>
+                                 <td>
+                                    <a ui-sref="#" data-toggle="modal" data-target="#employeePreview" class="pointer"><i class="fa fa-eye fa-fw"></i></a>
+                                    <a href="../addEmployee/addEmployee.html" class="pointer"><i class="fa fa-pencil fa-fw"></i></a>
+                                    <a ui-sref="#" class="pointer"><i class="fa fa-trash-o fa-fw"></i></a>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- Modal -->
+            <div id="employeePreview" class="modal fade" role="dialog">
+               <div class="modal-dialog modal-lg">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Employee Preview</h4>
+                     </div>
+                     <div class="modal-body">
+                        <p>Some text in the modal.</p>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- End Content Area -->
+      </div>
+      <script src="../content/js/jquery.min.js"></script>
+      <script src="../content/js/bootstrap.min.js"></script>
+      <script src="../content/js/metisMenu.min.js"></script>
+      <script src="../content/js/angular.min.js"></script>
+      <script src="../content/js/angular-ui-router.min.js"></script>
+      <script src="../content/js/d3.min.js"></script>
+      <script src="../content/js/nv.d3.min.js"></script>
+      <script src="../content/js/angular-nvd3.min.js"></script>
+      <script src="../content/js/moment.min.js"></script>
+      <script src="../content/js/footable.all.min.js"></script>
+      <script src="../content/js/angular-footable.min.js"></script>
+      <script src="../content/js/sb-admin-2.js"></script>
+      <script src="../content/js/moment-with-locales.js"></script>
+      <script src="../content/js/angular-moment-picker.min.js"></script>
+      <script src="../layout/layout.module.js"></script>
+      <script src="../layout/shell.controller.js"></script>
+      <script src="employee.controller.js"></script>
+      <script src="employee.service.js"></script>
+      <script src="employee.value.js"></script>
+      <script src="../content/js/loading-bars.js"></script>
+   </body>
+</html>

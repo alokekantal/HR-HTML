@@ -1,0 +1,34 @@
+
+<div class="header">
+    <i class="fa fa-angle-left" ng-click="previous()"></i>
+    <span>{{month.format("MMMM, YYYY")}}</span>
+    <i class="fa fa-angle-right" ng-click="next()"></i>
+</div>
+<div class="week names">
+    <span class="day">Sun</span>
+    <span class="day">Mon</span>
+    <span class="day">Tue</span>
+    <span class="day">Wed</span>
+    <span class="day">Thu</span>
+    <span class="day">Fri</span>
+    <span class="day">Sat</span>
+</div>
+<div class="week" ng-repeat="week in weeks">
+    <span class="day day-height" ng-class="{ today: day.isToday, 'different-month not-allowed': !day.isCurrentMonth, selected: day.date.isSame(selected) }"
+        ng-click="day.isCurrentMonth && select(day)" ng-repeat="day in week.days">{{!day.isCurrentMonth ? '' : day.number}}
+        <span ng-if="day.isCurrentMonth">
+            <select  ng-model="status" ng-change="day.isCurrentMonth && changeStatus(day, status)">
+                <option>Present</option>
+                <option>Leave</option>
+            </select>
+            <select ng-if="status == 'Leave'" ng-model="leaveType" ng-change="day.isCurrentMonth && changeStatus(day, status)">
+                <option>Weekly off</option>
+                <option>Casual Leave</option>
+                <option>Sick Leave</option>
+                <option>Earned Leave</option>
+                <option>Comp off</option>
+                <option>Client Holiday</option>
+            </select>
+        </span>
+    </span>
+</div>
