@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="employeeApp">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title>Employee Tracker</title>
+      <!-- CSS -->
+      <link rel="stylesheet" href="../content/vendor-css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../content/vendor-css/metisMenu.min.css" />
+      <link rel="stylesheet" href="../content/css/main.css">
+      <link rel="stylesheet" href="../content/css/sb-admin-2.css">
+      <link rel="stylesheet" href="../content/css/angular-moment-picker.min.css">
+      <link rel="stylesheet" href="../content/vendor-css/font-awesome.min.css" />
+      <link rel="stylesheet" href="../content/vendor-css/nv.d3.min.css" />
+      <link rel="stylesheet" href="../content/css/animate.css" />
+      <link rel="stylesheet" href="../content/css/loading-bars.css" />
+      <link rel="stylesheet" href="../content/vendor-css/footable.core.min.css" />
+   </head>
+   <body>
+      <!-- Simple splash screen-->
+      <div class="splash">
+         <div class="color-line"></div>
+         <div class="splash-title">
+            <h1>Employee Tracker</h1>
+            <img src="../content/images/loading-bars.svg" width="64" height="64" />
+         </div>
+      </div>
+      <div id="wrapper">
+         <!-- Navigation Area -->
+         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <!-- navbar-header -->
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="index.html">Employee Tracker</a>
+            </div>
+            <!-- /.navbar-header -->
+            <!-- navbar-top-links -->
+            <ul class="nav navbar-top-links navbar-right">
+               <!-- dropdown envelope icon -->
+               <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                  </a>
+                  <!-- dropdown-messages -->
+                  <ul class="dropdown-menu dropdown-messages">
+                     <li>
+                        <div class="text-center small">
+                           <strong>You have 4 tutorials</strong>
+                        </div>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a href="http://www.cc28tech.com/employee-tracker-angularjs-web-api-part-1" target="_blank">
+                           <div class="small">
+                              <strong>Part 1: </strong>
+                              <span class="text-info">
+                              Create a Web API Application in C#
+                              </span>
+                           </div>
+                        </a>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a href="http://www.cc28tech.com/employee-tracker-angularjs-web-api-part-2" target="_blank">
+                           <div class="small">
+                              <strong>Part 2: </strong>
+                              <span class="text-info">
+                              Create Web API Services
+                              </span>
+                           </div>
+                        </a>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a href="http://www.cc28tech.com/employee-tracker-angularjs-web-api-part-3" target="_blank">
+                           <div class="small">
+                              <strong>Part 3: </strong>
+                              <span class="text-info">
+                              Create a SPA in AngularJS
+                              </span>
+                           </div>
+                        </a>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a href="http://www.cc28tech.com/employee-tracker-angularjs-web-api-part-4" target="_blank">
+                           <div class="small">
+                              <strong>Part 4: </strong>
+                              <span class="text-info">
+                              Create Features in AngularJS
+                              </span>
+                           </div>
+                        </a>
+                     </li>
+                     <li class="divider"></li>
+                     <li>
+                        <a class="text-center text-info small" href="http://www.cc28tech.com" target="_blank">
+                           <div class="text-info">
+                              <strong>See Other Tutorials</strong>
+                           </div>
+                        </a>
+                     </li>
+                  </ul>
+                  <!-- /.dropdown-messages -->
+               </li>
+               <!-- /.dropdown envelope icon -->
+               <!-- dropdown user icon -->
+               <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                  </a>
+                  <!-- dropdown-user -->
+                  <ul class="dropdown-menu dropdown-user">
+                     <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                     </li>
+                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                     </li>
+                     <li class="divider"></li>
+                     <li><a href="../login/login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                     </li>
+                  </ul>
+                  <!-- /.dropdown-user -->
+               </li>
+               <!-- /.dropdown user icon -->
+            </ul>
+            <!-- /.navbar-top-links -->
+            <!-- navbar-static-side -->
+            <div class="navbar-default sidebar" role="navigation">
+               <!-- sidebar-collapse -->
+               <div class="sidebar-nav navbar-collapse">
+                  <ul class="nav" id="side-menu">
+                     <li ui-sref-active="active">
+                        <a href="../dashboard/dashboard.html">
+                        <i class="fa fa-dashboard"></i>
+                        <span class="nav-label">Dashboard</span>
+                        </a>
+                     </li>
+                     <li ui-sref-active="active">
+                        <a href="../employee/employee.html">
+                        <i class="fa fa-table"></i>
+                        <span class="nav-label">Employees</span>
+                        </a>
+                     </li>
+                     <li ui-sref-active="active">
+                        <a href="../attendance/attendance.html">
+                        <i class="fa fa-check"></i>
+                        <span class="nav-label">Attendance</span>
+                        </a>
+                     </li>
+                     <li ui-sref-active="active" class="active">
+                        <a href="#">
+                        <i class="fa fa-inr"></i>
+                        <span class="nav-label">Salary Initiation</span>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+               <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+         </nav>
+         <!-- End Navigation Area -->
+         <!-- Content Area -->
+         <!-- ng-class with current state name give you the ability to extended customization your view -->
+         <div id="page-wrapper" class="gray-bg {{$state.current.name}}">
+            <!-- Nested view  -->
+            <div class="template animated slideInRight" ng-controller="salaryInitiatController as vm" ng-init="vm.init()">
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <h2>Attendance</h2>
+                     <ol class="breadcrumb">
+                        <li><a ui-sref="home.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                        <li class="active"><i class="fa fa-table"></i> {{vm.title}}</li>
+                     </ol>
+                  </div>
+               </div>
+               <!-- /.row -->
+               <div class="row" style="margin-bottom: 10px;">
+                  <div class="col-sm-4 col-sm-offset-4 col-xs-10">
+                     <div class="input-group"
+                        change="vm.init()"
+                        moment-picker="vm.currentYearMonth"
+                        start-view="month"
+                        format="MMMM-YYYY">
+                        <span class="input-group-addon">
+                        <i class="fa fa-calendar fa-fw"></i>
+                        </span>
+                        <input class="form-control"
+                           placeholder="Select a date"
+                           ng-model="vm.currentYearMonth"
+                           ng-model-options="{ updateOn: 'blur' }">
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default panel-border-color-custom">
+                           <div class="panel-heading panel-header-custom" role="tab" id="headingTwo">
+                              <h4 class="panel-title">
+                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                 <i class="pull-right collapse-icon fa fa-angle-down"></i>
+                                 Ashim Kantal (EMP002)
+                                 </a>
+                              </h4>
+                           </div>
+                           <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                              <div class="panel-body">
+                                 <form class="form-horizontal" role="form">
+                                    <div class="form-group">
+                                       <label class="col-sm-2 control-label text-align-left">Process:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                       <label class="col-sm-2 control-label text-align-left">Location:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                       <label class="col-sm-2 control-label text-align-left">Designation:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="col-sm-2 control-label text-align-left">EPF No:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                       <label class="col-sm-2 control-label text-align-left">UAN:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                       <label class="col-sm-2 control-label text-align-left">ESI No.:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="col-sm-2 control-label text-align-left">Bank Acc. No.:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                       <label class="col-sm-2 control-label text-align-left">IFSC code:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                       <label class="col-sm-2 control-label text-align-left">Bank name:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="col-sm-2 control-label text-align-left">Days In Month:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                       <label class="col-sm-2 control-label text-align-left">Attendance:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                       <label class="col-sm-2 control-label text-align-left">deduct:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                       <div class="panel panel-default">
+                                          <div class="panel-body">
+                                             <div class="form-group earning-deduction-header">
+                                                <div class="col-sm-6 control-label text-align-center">Earnings</div>
+                                                <div class="col-sm-6 control-label text-align-center">Deduction</div>
+                                             </div>
+                                             <div class="form-group" style="border-bottom: 1px dotted;">
+                                                <!--Earning-->
+                                                <div class="col-sm-6">
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">Basic:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">HRA:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">Conv. Allow:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">Edu. Allow:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">Spcl Allow:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">Up-Keep Allow:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">Others/Roff:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <!--Deduction-->
+                                                <div class="col-sm-6">
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">PF Contr:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">ESI Contr:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">Prof. Tax:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">Advance:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">TDS:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <!--total Earning and deduction-->
+                                             <div class="form-group">
+                                                <label class="col-sm-3 control-label text-align-left">Gross Earnings:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                                <label class="col-sm-3 control-label text-align-left">Total Deduction:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                             </div>
+                                             <!--extra-->
+                                             <div class="form-group">
+                                                <label class="col-sm-3 control-label text-align-left">Tele/Inc/others rembursement:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                                <label class="col-sm-3 control-label text-align-left">Salary In Hand:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                             </div>
+                                             <div class="clearfix"></div>
+                                             <div class="form-group">
+                                                <label class="col-sm-3 control-label text-align-left">Co's Cont. To PF 3.67%:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                                <label class="col-sm-3 control-label text-align-left">Pension Fund 8.33%:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                             </div>
+                                             <div class="form-group">
+                                                <label class="col-sm-3 control-label text-align-left">EDLI 0.5%:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                                <label class="col-sm-3 control-label text-align-left">ADM CH 0.65%:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                             </div>
+                                             <div class="form-group">
+                                                <label class="col-sm-3 control-label text-align-left">ADM TO EDLI 0.01%:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                                <label class="col-sm-3 control-label text-align-left">Total CO's Cont to EPF 13.61%:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                             </div>
+                                             <div class="form-group">
+                                                <label class="col-sm-3 control-label text-align-left">CO'S CONT. TO ESI:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                             </div>
+                                             <div class="clearfix"></div>
+                                             <div class="form-group">
+                                                <label class="col-sm-3 col-sm-offset-6 control-label text-align-left">CTC:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                     </div>
+
+                     <!--2nd accordion-->
+                     <div class="panel panel-default panel-border-color-custom">
+                           <div class="panel-heading panel-header-custom" role="tab" id="headingTwo">
+                              <h4 class="panel-title">
+                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseone" aria-expanded="false" aria-controls="collapseTwo">
+                                 <i class="pull-right collapse-icon fa fa-angle-down"></i>
+                                 Aloke Kantal (EMP002)
+                                 </a>
+                              </h4>
+                           </div>
+                           <div id="collapseone" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                              <div class="panel-body">
+                                 <form class="form-horizontal" role="form">
+                                    <div class="form-group">
+                                       <label class="col-sm-2 control-label text-align-left">Process:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                       <label class="col-sm-2 control-label text-align-left">Location:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                       <label class="col-sm-2 control-label text-align-left">Designation:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="col-sm-2 control-label text-align-left">EPF No:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                       <label class="col-sm-2 control-label text-align-left">UAN:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                       <label class="col-sm-2 control-label text-align-left">ESI No.:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="col-sm-2 control-label text-align-left">Bank Acc. No.:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                       <label class="col-sm-2 control-label text-align-left">IFSC code:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                       <label class="col-sm-2 control-label text-align-left">Bank name:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="col-sm-2 control-label text-align-left">Days In Month:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                       <label class="col-sm-2 control-label text-align-left">Attendance:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                       <label class="col-sm-2 control-label text-align-left">deduct:</label>
+                                       <div class="col-sm-2">
+                                          <input type="text" class="form-control">
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                       <div class="panel panel-default">
+                                          <div class="panel-body">
+                                             <div class="form-group earning-deduction-header">
+                                                <div class="col-sm-6 control-label text-align-center">Earnings</div>
+                                                <div class="col-sm-6 control-label text-align-center">Deduction</div>
+                                             </div>
+                                             <div class="form-group" style="border-bottom: 1px dotted;">
+                                                <!--Earning-->
+                                                <div class="col-sm-6">
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">Basic:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">HRA:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">Conv. Allow:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">Edu. Allow:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">Spcl Allow:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">Up-Keep Allow:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">Others/Roff:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <!--Deduction-->
+                                                <div class="col-sm-6">
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">PF Contr:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">ESI Contr:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">Prof. Tax:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">Advance:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label class="col-sm-6 control-label text-align-left">TDS:</label>
+                                                      <div class="col-sm-6">
+                                                         <input type="text" class="form-control">
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <!--total Earning and deduction-->
+                                             <div class="form-group">
+                                                <label class="col-sm-3 control-label text-align-left">Gross Earnings:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                                <label class="col-sm-3 control-label text-align-left">Total Deduction:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                             </div>
+                                             <!--extra-->
+                                             <div class="form-group">
+                                                <label class="col-sm-3 control-label text-align-left">Tele/Inc/others rembursement:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                                <label class="col-sm-3 control-label text-align-left">Salary In Hand:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                             </div>
+                                             <div class="clearfix"></div>
+                                             <div class="form-group">
+                                                <label class="col-sm-3 control-label text-align-left">Co's Cont. To PF 3.67%:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                                <label class="col-sm-3 control-label text-align-left">Pension Fund 8.33%:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                             </div>
+                                             <div class="form-group">
+                                                <label class="col-sm-3 control-label text-align-left">EDLI 0.5%:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                                <label class="col-sm-3 control-label text-align-left">ADM CH 0.65%:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                             </div>
+                                             <div class="form-group">
+                                                <label class="col-sm-3 control-label text-align-left">ADM TO EDLI 0.01%:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                                <label class="col-sm-3 control-label text-align-left">Total CO's Cont to EPF 13.61%:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                             </div>
+                                             <div class="form-group">
+                                                <label class="col-sm-3 control-label text-align-left">CO'S CONT. TO ESI:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                             </div>
+                                             <div class="clearfix"></div>
+                                             <div class="form-group">
+                                                <label class="col-sm-3 col-sm-offset-6 control-label text-align-left">CTC:</label>
+                                                <div class="col-sm-3">
+                                                   <input type="text" class="form-control">
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                     </div>
+
+
+
+
+                  </div>                  
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- End Content Area -->
+      </div>
+      <script src="../content/js/jquery.min.js"></script>
+      <script src="../content/js/bootstrap.min.js"></script>
+      <script src="../content/js/metisMenu.min.js"></script>
+      <script src="../content/js/angular.min.js"></script>
+      <script src="../content/js/angular-ui-router.min.js"></script>
+      <script src="../content/js/d3.min.js"></script>
+      <script src="../content/js/nv.d3.min.js"></script>
+      <script src="../content/js/angular-nvd3.min.js"></script>
+      <script src="../content/js/moment.min.js"></script>
+      <script src="../content/js/footable.all.min.js"></script>
+      <script src="../content/js/angular-footable.min.js"></script>
+      <script src="../content/js/sb-admin-2.js"></script>
+      <script src="../content/js/moment-with-locales.js"></script>
+      <script src="../content/js/angular-moment-picker.min.js"></script>
+      <!--<script src="../layout/layout.module.js"></script>
+         <script src="../layout/shell.controller.js"></script>-->
+      <script src="../content/js/loading-bars.js"></script>
+      <script src="salaryInitiatcontroller.js"></script>
+      <script src="salaryInitiatService.js"></script>
+      <script>
+         function toggleIcon(e) {
+             $(e.target)
+                     .prev('.panel-heading')
+                     .find(".collapse-icon")
+                     .toggleClass('fa-angle-down fa-angle-up');
+             }
+             $('.panel-group').on('hidden.bs.collapse', toggleIcon);
+             $('.panel-group').on('shown.bs.collapse', toggleIcon);
+      </script>
+   </body>
+</html>

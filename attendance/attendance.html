@@ -119,14 +119,14 @@
                   </a>
                   <!-- dropdown-user -->
                   <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li><a href="../login/login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                    </li>
-                </ul>
+                     <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                     </li>
+                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                     </li>
+                     <li class="divider"></li>
+                     <li><a href="../login/login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                     </li>
+                  </ul>
                   <!-- /.dropdown-user -->
                </li>
                <!-- /.dropdown user icon -->
@@ -155,6 +155,12 @@
                         <span class="nav-label">Attendance</span>
                         </a>
                      </li>
+                     <li ui-sref-active="active">
+                        <a href="../salaryInitiat/salaryInitiat.html">
+                        <i class="fa fa-inr"></i>
+                        <span class="nav-label">Salary Initiation</span>
+                        </a>
+                     </li>
                   </ul>
                </div>
                <!-- /.sidebar-collapse -->
@@ -166,7 +172,7 @@
          <!-- ng-class with current state name give you the ability to extended customization your view -->
          <div id="page-wrapper" class="gray-bg {{$state.current.name}}">
             <!-- Nested view  -->
-            <div class="template animated slideInRight" ng-controller="attendanceController as vm" ng-init="vm.init()">
+            <div class="tempLate animated slideInRight" ng-controller="attendanceController as vm" ng-init="vm.init(1)">
                <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                      <h2>Attendance</h2>
@@ -178,116 +184,124 @@
                </div>
                <!-- /.row -->
                <div class="row" style="margin-bottom: 10px;">
-               <div class="col-sm-4 col-sm-offset-4 col-xs-10">
-                    <div class="input-group"
-                      change="vm.init()"
-                      moment-picker="vm.currentYearMonth"
-                      start-view="month"
-                      format="MMMM-YYYY">
-                      <span class="input-group-addon">
-                      <i class="fa fa-calendar fa-fw"></i>
-                      </span>
-                      <input class="form-control"
-                          placeholder="Select a date"
-                          ng-model="vm.currentYearMonth"
-                          ng-model-options="{ updateOn: 'blur' }">
-                    </div>
-                </div>
+                  <div class="col-sm-4 col-sm-offset-4 col-xs-10">
+                     <div class="input-group"
+                        change="vm.init()"
+                        moment-picker="vm.currentYearMonth"
+                        start-view="month"
+                        format="MMMM-YYYY">
+                        <span class="input-group-addon">
+                        <i class="fa fa-calendar fa-fw"></i>
+                        </span>
+                        <input class="form-control"
+                           placeholder="Select a date"
+                           ng-model="vm.currentYearMonth"
+                           ng-model-options="{ updateOn: 'blur' }">
+                     </div>
+                  </div>
                </div>
                <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                      <div class="row row-margin panel-heading bgOrg">
-                        <div class="col-sm-1 col-xs-12 pull-left">#</div>
                         <div class="col-sm-2 col-xs-12">Name</div>
                         <div class="col-sm-3 col-xs-12">Designation</div>
                         <div class="col-sm-2 col-xs-12">Location</div>
                         <div class="col-sm-2 col-xs-12">Status</div>
                         <div class="col-sm-2 col-xs-12">DOJ</div>
                      </div>
-                     <div ng-repeat="product in vm.products">
-                        <div class="row row-margin panel panel-body">
-                           <div class="col-xs-1">
-                              <div class="handpointer glyphicon glyphicon-chevron-right" data-ng-click="vm.collapse($event)" data-target="#view2_{{product.empId}}"
-                                 data-toggle="collapse" aria-expanded="false" data-ng-if="product.items!=null">
-                              </div>
+                     <div class="panel-group" id="accordion">
+                        <div class="panel panel-default" ng-repeat="attendance in vm.employees">
+                           <div class="panel-heading">
+                              <h4 class="panel-title" style="height: 45px;">
+                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#_{{attendance.empId}}">
+                                    <i class="pull-right collapse-icon fa fa-angle-down"></i>
+                                    <div class="col-sm-2 col-xs-12" data-ng-bind="attendance.empName"></div>
+                                    <div class="col-sm-3 col-xs-12" data-ng-bind="attendance.designation"></div>
+                                    <div class="col-sm-2 col-xs-12" data-ng-bind="attendance.Location"></div>
+                                    <div class="col-sm-2 col-xs-12" data-ng-bind="attendance.status"></div>
+                                    <div class="col-sm-2 col-xs-12" data-ng-bind="attendance.dob | date: 'MM/dd/yyyy'"></div>
+                                 </a>
+                              </h4>
                            </div>
-                           <div class="col-sm-2 col-xs-12" data-ng-bind="product.empName"></div>
-                           <div class="col-sm-3 col-xs-12" data-ng-bind="product.designation"></div>
-                           <div class="col-sm-2 col-xs-12" data-ng-bind="product.Location"></div>
-                           <div class="col-sm-2 col-xs-12" data-ng-bind="product.status"></div>
-                           <div class="col-sm-2 col-xs-12" data-ng-bind="product.dob | date: 'MM/dd/yyyy'"></div>
-                        </div>
-                        <div class="collapse" id="view2_{{product.empId}}" data-ng-if="product.items!=null">
-                           <div class="col-sm-12">
-                              <div class="col-sm-2">
-                                 <label>Present: </label> 26
-                              </div>
-                              <div class="col-sm-2">
-                                 <label>Absent: </label> 0
-                              </div>
-                              <div class="col-sm-2">
-                                 <label>Holiday: </label> 0
-                              </div>
-                              <div class="col-sm-2">
-                                 <label>Leave: </label> 0
-                              </div>
-                              <div class="col-sm-2">
-                                 <label>laTe: </label> 0
-                              </div>
-                              <div class="col-sm-2">
-                                 <label>Week Off: </label> 0
-                              </div>
-                           </div>
-                           <div class="col-sm-12">
-                              <div class="col-sm-2">
-                                 <label>Sunday </label> 0
-                              </div>
-                              <div class="col-sm-2">
-                                 <label>Auto Deduction: </label> 0
-                              </div>
-                              <div class="col-sm-2">
-                                 <label>Exception Grant: </label> 0
-                              </div>
-                              <div class="col-sm-2">
-                                 <label>Final Deductions: </label> 0
-                              </div>
-                              <div class="col-sm-2">
-                                 <label>Total: </label>0
-                              </div>
-                              <div class="col-sm-2">
-                                 <label>Final Attendance: </label> 0
-                              </div>
-                           </div>
-                           <div class="col-sm-12" style="margin-bottom: 20px;">
-                              <div class="table-responsive">
-                                 <table class="table table-striped table-bordered table-hover" style="float: left">
-                                    <thead>
-                                       <tr>
-                                          <th scope="col" ng-repeat="date in vm.dates" style="background-color:#bedee5"> {{date.day}} </th>
-                                       </tr>
-                                       <tr>
-                                          <th scope="col" ng-repeat="date in vm.dates" style="background-color: #5c5e5e; color: white"> {{date.date}} </th>
-                                       </tr>
-                                    </thead>
-                                    <tbody>
-                                       <tr>
-                                          <td ng-repeat="date in vm.dates">
-                                             <select ng-model="status">
-                                                <option>Present</option>
-                                                <option>Leave</option>
-                                             </select>
-                                             <select ng-if="status == 'Leave'" ng-model="leaveType" style="margin-top: 5px;width: 100%;">
-                                                <option>Weekly off</option>
-                                                <option>Casual Leave</option>
-                                                <option>Sick Leave</option>
-                                                <option>Earned Leave</option>
-                                                <option>Comp off</option>
-                                                <option>Client Holiday</option>
-                                             </select>
-                                          </td>
-                                       </tr>
-                                    </tbody>
-                                 </table>
+                           <div id="_{{attendance.empId}}" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                  <div class="col-sm-12">
+                                     <button type="button" class="btn btn-primary  pull-right" ng-click="vm.saveAttendanceForEmnployee(attendance)">
+                                        <i class="fa fa-save"></i> Save
+                                     </button>
+                                  </div>
+                                 <div class="col-sm-12">
+                                    <div class="col-sm-2">
+                                       <label>Present: </label> 26
+                                    </div>
+                                    <div class="col-sm-2">
+                                       <label>Absent: </label> 0
+                                    </div>
+                                    <div class="col-sm-2">
+                                       <label>Holiday: </label> 0
+                                    </div>
+                                    <div class="col-sm-2">
+                                       <label>Leave: </label> 0
+                                    </div>
+                                    <div class="col-sm-2">
+                                       <label>Late: </label> 0
+                                    </div>
+                                    <div class="col-sm-2">
+                                       <label>Week Off: </label> 0
+                                    </div>
+                                 </div>
+                                 <div class="col-sm-12">
+                                    <div class="col-sm-2">
+                                       <label>Sunday </label> 0
+                                    </div>
+                                    <div class="col-sm-2">
+                                       <label>Auto Deduction: </label> 0
+                                    </div>
+                                    <div class="col-sm-2">
+                                       <label>Exception Grant: </label> 0
+                                    </div>
+                                    <div class="col-sm-2">
+                                       <label>Final Deductions: </label> 0
+                                    </div>
+                                    <div class="col-sm-2">
+                                       <label>Total: </label>0
+                                    </div>
+                                    <div class="col-sm-2">
+                                       <label>Final Attendance: </label> 0
+                                    </div>
+                                 </div>
+                                 <div class="col-sm-12" style="margin-bottom: 20px;">
+                                    <div class="table-responsive">
+                                       <table class="table table-striped table-bordered table-hover" style="float: left">
+                                          <thead>
+                                             <tr>
+                                                <th scope="col" ng-repeat="date in attendance.monthlyAttendance" style="background-color:#bedee5"> {{date.day}} </th>
+                                             </tr>
+                                             <tr>
+                                                <th scope="col" ng-repeat="date in attendance.monthlyAttendance" style="background-color: #5c5e5e; color: white"> {{date.date}} </th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+                                             <tr>
+                                                <td ng-repeat="date in attendance.monthlyAttendance">
+                                                   <select ng-model="date.attendanceStatus">
+                                                      <option>Present</option>
+                                                      <option>Leave</option>
+                                                   </select>
+                                                   <select ng-if="date.attendanceStatus == 'Leave'" ng-model="date.leaveCategory" style="margin-top: 5px;width: 100%;">
+                                                      <option>Weekly off</option>
+                                                      <option>Casual Leave</option>
+                                                      <option>Sick Leave</option>
+                                                      <option>Earned Leave</option>
+                                                      <option>Comp off</option>
+                                                      <option>Client Holiday</option>
+                                                   </select>
+                                                </td>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                    </div>
+                                 </div>
                               </div>
                            </div>
                         </div>
@@ -313,11 +327,19 @@
       <script src="../content/js/moment-with-locales.js"></script>
       <script src="../content/js/angular-moment-picker.min.js"></script>
       <!--<script src="../layout/layout.module.js"></script>
-      <script src="../layout/shell.controller.js"></script>-->
+         <script src="../layout/shell.controller.js"></script>-->
       <script src="../content/js/loading-bars.js"></script>
-
       <script src="attendance.controller.js"></script>
       <script src="attendance.service.js"></script>
-      
+      <script>
+         function toggleIcon(e) {
+             $(e.target)
+                     .prev('.panel-heading')
+                     .find(".collapse-icon")
+                     .toggleClass('fa-angle-down fa-angle-up');
+             }
+             $('.panel-group').on('hidden.bs.collapse', toggleIcon);
+             $('.panel-group').on('shown.bs.collapse', toggleIcon);
+      </script>
    </body>
 </html>
