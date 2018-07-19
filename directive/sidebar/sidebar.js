@@ -7,11 +7,10 @@
  * # adminPosHeader
  */
 
-angular.module('sbAdminApp')
+angular.module('employeeApp')
   .directive('sidebar',['$location',function() {
     return {
-      templateUrl:'scripts/directives/sidebar/sidebar.html',
-      restrict: 'E',
+      restrict: 'A',
       replace: true,
       scope: {
       },

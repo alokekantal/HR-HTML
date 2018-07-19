@@ -185,369 +185,365 @@
                <!-- /.row -->
                <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                     <fieldset class="the-fieldset">
-                        <legend class="the-legend">Personal Detail</legend>
-                        <form class="form-horizontal" role="form">
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">First Name:</label>
-                              <div class="col-sm-2 col-xs-10">
-                                 <select class="form-control">
-                                    <option>Mr</option>
-                                    <option>Ms</option>
-                                    <option>Mrs</option>
-                                    <option>5</option>
-                                 </select>
+                        <form class="form-horizontal" role="form" name="parsonalDetailForm" novalidate>
+                              <fieldset class="the-fieldset">
+                                    <legend class="the-legend">Personal Detail</legend>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">First Name:</label>
+                                          <div class="col-sm-2 col-xs-10" ng-class="{'has-error': parsonalDetailForm.salutation.$touched && parsonalDetailForm.salutation.$invalid}">
+                                          <select class="form-control" ng-model="employee.salutation" name="salutation" required>
+                                                <option>Mr</option>
+                                                <option>Ms</option>
+                                                <option>Mrs</option>
+                                                <option>5</option>
+                                          </select>
+                                          </div>
+                                          <div class="col-sm-4 col-xs-12" ng-class="{'has-error': parsonalDetailForm.fName.$touched && parsonalDetailForm.fName.$invalid}">
+                                          <input type="text" name="fName" ng-model="employee.fName" class="form-control" placeholder="First Name" required>
+                                          </div>
+                                          <div class="col-sm-4 col-xs-12" ng-class="{'has-error': parsonalDetailForm.lName.$touched && parsonalDetailForm.lName.$invalid}">
+                                          <input type="text" class="form-control" placeholder="Last Name" name="lName" ng-model="employee.lName" required>
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">Father`s Name/Husband Name:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Father`s Name/Husband Name">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">Designation:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Designation">
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">D.O.B.:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <div class="input-group"
+                                                ng-class="{'has-error': parsonalDetailForm.dob.$touched && parsonalDetailForm.dob.$invalid}"
+                                                moment-picker="employee.dob"
+                                                start-view="month"
+                                                format="DD-MM-YYYY">
+                                                <span class="input-group-addon">
+                                                <i class="fa fa-calendar fa-fw"></i>
+                                                </span>
+                                                <input class="form-control"
+                                                placeholder="Select a date"
+                                                name="dob" 
+                                                ng-model="employee.dob" 
+                                                required
+                                                ng-model-options="{ updateOn: 'blur' }">
+                                          </div>
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">Blood Group:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <select class="form-control">
+                                                <option>A+</option>
+                                                <option>A-</option>
+                                                <option>B+</option>
+                                                <option>B-</option>
+                                                <option>AB+</option>
+                                                <option>AB-</option>
+                                                <option>O+</option>
+                                                <option>O-</option>
+                                          </select>
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">Gender:</label>
+                                          <div class="col-sm-4 col-xs-10" ng-class="{'has-error': parsonalDetailForm.gender.$touched && parsonalDetailForm.gender.$invalid}">
+                                          <label class="radio-inline">
+                                          <input type="radio" name="gender" ng-model="employee.gender" value="male" required>Male
+                                          </label>
+                                          <label class="radio-inline">
+                                          <input type="radio" name="gender" ng-model="employee.gender" value="female" required>Female
+                                          </label>
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">Marital Status:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <label class="radio-inline">
+                                          <input type="radio" name="maritalStatus" value="male">Married
+                                          </label>
+                                          <label class="radio-inline">
+                                          <input type="radio" name="maritalStatus" value="female">Single
+                                          </label>
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">Sub Function:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Sub Function">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">Process:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Process">
+                                          </div>
+                                    </div>
+                              </fieldset>
+                                    
+                              <fieldset class="the-fieldset" style="margin-top: 20px;">
+                                    <legend class="the-legend">Contact Detail</legend>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label"> Address 1:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Address 1">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label"> Address 2:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder=" Address 2">
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label"> City/Dist:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="City/Dist">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label"> PIN Code:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="PIN Code">
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">Contact No.:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Contact No">
+                                          </div>
+                                    </div>
+                              </fieldset>
+                              <fieldset class="the-fieldset" style="margin-top: 20px;">
+                                    <legend class="the-legend">Other Detail</legend>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label"> Interview Date:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <div class="input-group"
+                                                moment-picker="interviewDate"
+                                                start-view="month"
+                                                format="DD-MM-YYYY">
+                                                <span class="input-group-addon">
+                                                <i class="fa fa-calendar fa-fw"></i>
+                                                </span>
+                                                <input class="form-control"
+                                                placeholder="Select a date"
+                                                ng-model="interviewDate"
+                                                ng-model-options="{ updateOn: 'blur' }">
+                                          </div>
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">Joining date:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <div class="input-group"
+                                                moment-picker="joiningDate"
+                                                start-view="month"
+                                                format="DD-MM-YYYY">
+                                                <span class="input-group-addon">
+                                                <i class="fa fa-calendar fa-fw"></i>
+                                                </span>
+                                                <input class="form-control"
+                                                placeholder="Select a date"
+                                                ng-model="joiningDate"
+                                                ng-model-options="{ updateOn: 'blur' }">
+                                          </div>
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">Probation Upto:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Probation Upto">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">Period:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Period">
+                                          </div>
+                                    </div>
+                              </fieldset>
+                              <fieldset class="the-fieldset" style="margin-top: 20px;">
+                                    <legend class="the-legend">Salary Detail</legend>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">Gross Salary:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Gross Salary">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">Basic:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Basic">
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">16114:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="16114">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">Con.:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Con.">
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">Education Allowance:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Education Allowance">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">Spl. Allowance:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Spl. Allowance">
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">Upkeep Allowance:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Upkeep Allowance">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">Dif If Any:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Dif If Any">
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">EPF 12 % of Basic Salary:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="EPF 12 % of Basic Salary">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">ESIC 1.75% of Gross Salary:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="ESIC 1.75% of Gross Salary">
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">W.B. Proff_tax:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="W.B. Proff_tax">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">Tot_ded:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Tot_ded">
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">Take Home Salary:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Take Home Salary">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">Mobile /Travel Reimbursement(Optional):</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Mobile /Travel Reimbursement(Optional)">
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">Take Home with  Mobile Re.:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Take Home with  Mobile Re.">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">CO'S CONT. TO PF:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="CO'S CONT. TO PF">
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">Pension Fund:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Pension Fund">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">EDLI:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="EDLI">
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">ADM CH:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="ADM CH">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">ADM TO EDLI:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="ADM TO EDLI">
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">EPF 13.16% of Basic Salary:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="EPF 13.16% of Basic Salary">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">ESIC 4.75% of Gross Salary:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="ESIC 4.75% of Gross Salary">
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">Cost to company Per Month:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Cost to company Per Month">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">Annual CTC:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Annual CTC">
+                                          </div>
+                                    </div>
+                              </fieldset>
+                              <fieldset class="the-fieldset" style="margin-top: 20px;">
+                                    <legend class="the-legend">Bank Detail & Other</legend>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">PAN Number:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="PAN Number">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">Aadhar Card Number:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Aadhar Card Number">
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">Voter Id Card Number:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="Voter Id Card Number">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">A/C Number:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="A/C Number">
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">IFSC Code:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <input type="text" class="form-control" placeholder="IFSC Code">
+                                          </div>
+                                          <label class="col-sm-2 col-xs-2 control-label">Resignation Date:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <div class="input-group"
+                                                moment-picker="resignationDate"
+                                                start-view="month"
+                                                format="DD-MM-YYYY">
+                                                <span class="input-group-addon">
+                                                <i class="fa fa-calendar fa-fw"></i>
+                                                </span>
+                                                <input class="form-control"
+                                                placeholder="Select a date"
+                                                ng-model="resignationDate"
+                                                ng-model-options="{ updateOn: 'blur' }">
+                                          </div>
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-2 col-xs-2 control-label">Relieving Dated:</label>
+                                          <div class="col-sm-4 col-xs-10">
+                                          <div class="input-group"
+                                                moment-picker="relievingDated"
+                                                start-view="month"
+                                                format="DD-MM-YYYY">
+                                                <span class="input-group-addon">
+                                                <i class="fa fa-calendar fa-fw"></i>
+                                                </span>
+                                                <input class="form-control"
+                                                placeholder="Select a date"
+                                                ng-model="relievingDated"
+                                                ng-model-options="{ updateOn: 'blur' }">
+                                          </div>
+                                          </div>
+                                    </div>
+                              </fieldset>
+                              <div style="margin-top: 20px;">
+                                    <button type="submit" class="btn btn-primary  pull-right">
+                                    <i class="fa fa-save"></i> Save
+                                    </button>
                               </div>
-                              <div class="col-sm-4 col-xs-12">
-                                 <input type="text" class="form-control" placeholder="First Name">
-                              </div>
-                              <div class="col-sm-4 col-xs-12">
-                                 <input type="text" class="form-control" placeholder="Last Name">
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">Father`s Name/Husband Name:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Father`s Name/Husband Name">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">Designation:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Designation">
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">D.O.B.:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <div class="input-group"
-                                    moment-picker="dob"
-                                    start-view="month"
-                                    format="DD-MM-YYYY">
-                                    <span class="input-group-addon">
-                                    <i class="fa fa-calendar fa-fw"></i>
-                                    </span>
-                                    <input class="form-control"
-                                       placeholder="Select a date"
-                                       ng-model="dob"
-                                       ng-model-options="{ updateOn: 'blur' }">
-                                 </div>
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">Blood Group:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <select class="form-control">
-                                    <option>A+</option>
-                                    <option>A-</option>
-                                    <option>B+</option>
-                                    <option>B-</option>
-                                    <option>AB+</option>
-                                    <option>AB-</option>
-                                    <option>O+</option>
-                                    <option>O-</option>
-                                 </select>
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">Gender:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <label class="radio-inline">
-                                 <input type="radio" name="gender" id="gender1" value="male">Male
-                                 </label>
-                                 <label class="radio-inline">
-                                 <input type="radio" name="gender" id="gender2" value="female">Female
-                                 </label>
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">Marital Status:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <label class="radio-inline">
-                                 <input type="radio" name="maritalStatus" value="male">Married
-                                 </label>
-                                 <label class="radio-inline">
-                                 <input type="radio" name="maritalStatus" value="female">Single
-                                 </label>
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">Sub Function:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Sub Function">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">Process:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Process">
-                              </div>
-                           </div>
                         </form>
-                     </fieldset>
-                     <fieldset class="the-fieldset" style="margin-top: 20px;">
-                        <legend class="the-legend">Contact Detail</legend>
-                        <form class="form-horizontal" role="form">
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label"> Address 1:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Address 1">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label"> Address 2:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder=" Address 2">
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label"> City/Dist:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="City/Dist">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label"> PIN Code:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="PIN Code">
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">Contact No.:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Contact No">
-                              </div>
-                           </div>
-                        </form>
-                     </fieldset>
-                     <fieldset class="the-fieldset" style="margin-top: 20px;">
-                        <legend class="the-legend">Other Detail</legend>
-                        <form class="form-horizontal" role="form">
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label"> Interview Date:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <div class="input-group"
-                                    moment-picker="interviewDate"
-                                    start-view="month"
-                                    format="DD-MM-YYYY">
-                                    <span class="input-group-addon">
-                                    <i class="fa fa-calendar fa-fw"></i>
-                                    </span>
-                                    <input class="form-control"
-                                       placeholder="Select a date"
-                                       ng-model="interviewDate"
-                                       ng-model-options="{ updateOn: 'blur' }">
-                                 </div>
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">Joining date:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <div class="input-group"
-                                    moment-picker="joiningDate"
-                                    start-view="month"
-                                    format="DD-MM-YYYY">
-                                    <span class="input-group-addon">
-                                    <i class="fa fa-calendar fa-fw"></i>
-                                    </span>
-                                    <input class="form-control"
-                                       placeholder="Select a date"
-                                       ng-model="joiningDate"
-                                       ng-model-options="{ updateOn: 'blur' }">
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">Probation Upto:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Probation Upto">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">Period:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Period">
-                              </div>
-                           </div>
-                        </form>
-                     </fieldset>
-                     <fieldset class="the-fieldset" style="margin-top: 20px;">
-                        <legend class="the-legend">Salary Detail</legend>
-                        <form class="form-horizontal" role="form">
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">Gross Salary:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Gross Salary">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">Basic:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Basic">
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">16114:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="16114">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">Con.:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Con.">
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">Education Allowance:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Education Allowance">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">Spl. Allowance:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Spl. Allowance">
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">Upkeep Allowance:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Upkeep Allowance">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">Dif If Any:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Dif If Any">
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">EPF 12 % of Basic Salary:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="EPF 12 % of Basic Salary">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">ESIC 1.75% of Gross Salary:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="ESIC 1.75% of Gross Salary">
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">W.B. Proff_tax:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="W.B. Proff_tax">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">Tot_ded:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Tot_ded">
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">Take Home Salary:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Take Home Salary">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">Mobile /Travel Reimbursement(Optional):</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Mobile /Travel Reimbursement(Optional)">
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">Take Home with  Mobile Re.:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Take Home with  Mobile Re.">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">CO'S CONT. TO PF:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="CO'S CONT. TO PF">
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">Pension Fund:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Pension Fund">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">EDLI:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="EDLI">
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">ADM CH:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="ADM CH">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">ADM TO EDLI:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="ADM TO EDLI">
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">EPF 13.16% of Basic Salary:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="EPF 13.16% of Basic Salary">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">ESIC 4.75% of Gross Salary:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="ESIC 4.75% of Gross Salary">
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">Cost to company Per Month:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Cost to company Per Month">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">Annual CTC:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Annual CTC">
-                              </div>
-                           </div>
-                        </form>
-                     </fieldset>
-                     <fieldset class="the-fieldset" style="margin-top: 20px;">
-                        <legend class="the-legend">Bank Detail & Other</legend>
-                        <form class="form-horizontal" role="form">
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">PAN Number:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="PAN Number">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">Aadhar Card Number:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Aadhar Card Number">
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">Voter Id Card Number:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="Voter Id Card Number">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">A/C Number:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="A/C Number">
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">IFSC Code:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <input type="text" class="form-control" placeholder="IFSC Code">
-                              </div>
-                              <label class="col-sm-2 col-xs-2 control-label">Resignation Date:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <div class="input-group"
-                                    moment-picker="resignationDate"
-                                    start-view="month"
-                                    format="DD-MM-YYYY">
-                                    <span class="input-group-addon">
-                                    <i class="fa fa-calendar fa-fw"></i>
-                                    </span>
-                                    <input class="form-control"
-                                       placeholder="Select a date"
-                                       ng-model="resignationDate"
-                                       ng-model-options="{ updateOn: 'blur' }">
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-sm-2 col-xs-2 control-label">Relieving Dated:</label>
-                              <div class="col-sm-4 col-xs-10">
-                                 <div class="input-group"
-                                    moment-picker="relievingDated"
-                                    start-view="month"
-                                    format="DD-MM-YYYY">
-                                    <span class="input-group-addon">
-                                    <i class="fa fa-calendar fa-fw"></i>
-                                    </span>
-                                    <input class="form-control"
-                                       placeholder="Select a date"
-                                       ng-model="relievingDated"
-                                       ng-model-options="{ updateOn: 'blur' }">
-                                 </div>
-                              </div>
-                           </div>
-                        </form>
-                     </fieldset>
-                     <div style="margin-top: 20px;">
-                        <button type="button" class="btn btn-primary  pull-right">
-                        <i class="fa fa-save"></i> Save
-                        </button>
-                     </div>
                   </div>
                </div>
             </div>
@@ -568,11 +564,8 @@
       <script src="../content/js/sb-admin-2.js"></script>
       <script src="../content/js/moment-with-locales.js"></script>
       <script src="../content/js/angular-moment-picker.min.js"></script>
-      <!--<script src="../layout/layout.module.js"></script>
-      <script src="../layout/layout.controller.js"></script>-->
       <script src="../content/js/loading-bars.js"></script>
 
-      <script src="../layout/shell.controller.js"></script>
       <script src="addEmployee.controller.js"></script>
       <script src="addEmployee.service.js"></script>
       
