@@ -1,11 +1,11 @@
 (function () {
     'use strict';
 	angular.module('employeeApp')
-    .service('attendanceService', ['$q', '$http', function($q, $http){
-        var getAttendanceDetailForAllEmpoloyee = function () {
+    .service('commonService', ['$q', '$http', function($q, $http){
+        var getAttendanceStatusMaster = function () {
             var deferred = $q.defer();
             $http({
-                url: '../master/employeeAttendanceDetail.json',
+                url: '../master/attendanceMaster.json',
                 method: 'GET'
             }).then(function(res){
                 deferred.resolve(res.data);
@@ -16,7 +16,7 @@
             return deferred.promise;
         }
         return {
-            getAttendanceDetailForAllEmpoloyee: getAttendanceDetailForAllEmpoloyee
+            getAttendanceStatusMaster: getAttendanceStatusMaster
         }
     }])
 })();

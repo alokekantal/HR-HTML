@@ -1,0 +1,45 @@
+[
+	{
+		"empId": "Emp001",
+		"empName": "Aloke Kantal",
+		"empDesig": "Manager",
+		"empStatus": "Active",
+		"empDoj": "1531888039803",
+		"numPresentDay": 20,
+		"numAbsentDay": 5,
+		"numLeave": 5,
+		"numHoliday": 5,
+		"numLate": 0,
+		"numWeeklyOff": 0,
+		"numSunday": 0,
+		"numAutoDeduct": 0,
+		"numExcpeGrant": 0,
+		"numFinalDeduct": 0,
+		"numTotDayInMonth": 0,
+		"numFinalAttendance": 0,
+		"attendance": [
+			{
+				"date": 1531888039803,
+				"attendanceCode": "1",
+				"updatedAt": 1531888039803
+				 
+			},
+			{
+					"date": 1531888039803,
+					"attendanceCode": "2",
+					"updatedAt": 1531888039803
+			},
+			{
+					"date": 1531888039803,
+					"attendanceCode": "3",
+					"updatedAt": 1531888039803
+			},
+			{
+					"date": 1531888039803,
+					"attendanceCode": "2",
+					"updatedAt": 1531888039803
+			} 
+		]
+	
+	}
+]

@@ -1,0 +1,30 @@
+[
+	{
+		"code": 1,
+		"description": "Present" 
+	},
+	{
+		"code": 2,
+		"description": "Absent"
+	},
+	{
+		"code": 3,
+		"description": "Holiday"
+	},
+	{
+		"code": 4,
+		"description": "Leave"
+	},
+	{
+		"code": 5,
+		"description": "Late"
+	},
+	{
+		"code": 6,
+		"description": "Week Off"
+	},
+	{
+		"code": 7,
+		"description": "Sunday"
+	}
+]
