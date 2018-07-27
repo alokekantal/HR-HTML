@@ -356,4 +356,10 @@ outline: none;
   padding-right: 0px
 }
 
+.custom-selectbox{
+    height: 25px;
+    width: 90px;
+    border-radius: 4px;
+}
+
   

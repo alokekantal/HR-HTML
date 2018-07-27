@@ -311,7 +311,7 @@
                                           <tbody>
                                              <tr>
                                                 <td ng-repeat="date in attendance.attendance">
-                                                   <select ng-model="date.attendanceCode" ng-change="vm.calculateStatus(employeeIndex, date.attendanceCode)">
+                                                   <select class="custom-selectbox" ng-model="date.attendanceCode" ng-change="vm.calculateStatus(employeeIndex, date.attendanceCode)">
                                                        <option value="0">--Select--</option>
                                                        <option ng-repeat="status in vm.attendanceStatusMaster" value={{status.code}}>{{status.description}}</option>
                                                    </select>
