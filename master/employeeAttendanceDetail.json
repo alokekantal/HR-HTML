@@ -2,44 +2,43 @@
 	{
 		"empId": "Emp001",
 		"empName": "Aloke Kantal",
-		"empDesig": "Manager",
+		"empDesig": "Team Lead",
 		"empStatus": "Active",
 		"empDoj": "1531888039803",
-		"numPresentDay": 20,
-		"numAbsentDay": 5,
-		"numLeave": 5,
-		"numHoliday": 5,
+		"numPresentDay": 0,
+		"numAbsentDay": 0,
+		"numLeave": 0,
+		"numHoliday": 0,
 		"numLate": 0,
 		"numWeeklyOff": 0,
 		"numSunday": 0,
 		"numAutoDeduct": 0,
 		"numExcpeGrant": 0,
 		"numFinalDeduct": 0,
-		"numTotDayInMonth": 0,
+		"numTotalDayInMonth": 0,
 		"numFinalAttendance": 0,
 		"attendance": [
-			{
-				"date": 1531888039803,
-				"attendanceCode": "1",
-				"updatedAt": 1531888039803
-				 
-			},
-			{
-					"date": 1531888039803,
-					"attendanceCode": "2",
-					"updatedAt": 1531888039803
-			},
-			{
-					"date": 1531888039803,
-					"attendanceCode": "3",
-					"updatedAt": 1531888039803
-			},
-			{
-					"date": 1531888039803,
-					"attendanceCode": "2",
-					"updatedAt": 1531888039803
-			} 
 		]
-	
+	},
+	{
+		"empId": "Emp002",
+		"empName": "Jayanta Kumar Das",
+		"empDesig": "Manager",
+		"empStatus": "Active",
+		"empDoj": "1531888039803",
+		"numPresentDay": 0,
+		"numAbsentDay": 0,
+		"numLeave": 0,
+		"numHoliday": 0,
+		"numLate": 0,
+		"numWeeklyOff": 0,
+		"numSunday": 0,
+		"numAutoDeduct": 0,
+		"numExcpeGrant": 0,
+		"numFinalDeduct": 0,
+		"numTotalDayInMonth": 0,
+		"numFinalAttendance": 0,
+		"attendance": [
+		]
 	}
 ]

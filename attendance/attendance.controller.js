@@ -34,7 +34,6 @@
                         shortDay: weekdayAndMonth.weekday[longDay]  
                     });
             }
-            console.log(vm.dates);
             prepareCompleteAttendanceData();
         }
 
@@ -51,7 +50,6 @@
                     }
                 });                
             });
-            console.log(vm.employees);
         }
 
         vm.init = function(a){ 
@@ -69,7 +67,44 @@
         
         vm.saveAttendanceForEmnployee = function(attendanceForMonth){
             console.log(attendanceForMonth);
-        }        
+        } 
+
+        vm.calculateStatus = function(employeeIndex, attendanceCode){
+            //present
+            vm.employees[employeeIndex].numPresentDay = (_.filter(vm.employees[employeeIndex].attendance, (attendancePerday) => attendancePerday.attendanceCode == 1)).length;
+            
+            //Absent
+            vm.employees[employeeIndex].numAbsentDay = (_.filter(vm.employees[employeeIndex].attendance, (attendancePerday) => attendancePerday.attendanceCode == 2)).length;
+            
+            //Holiday
+            vm.employees[employeeIndex].numHoliday = (_.filter(vm.employees[employeeIndex].attendance, (attendancePerday) => attendancePerday.attendanceCode == 3)).length;
+
+            //Leave
+            vm.employees[employeeIndex].numLeave = (_.filter(vm.employees[employeeIndex].attendance, (attendancePerday) => attendancePerday.attendanceCode == 4)).length;
+
+            //Late
+            vm.employees[employeeIndex].numLate = (_.filter(vm.employees[employeeIndex].attendance, (attendancePerday) => attendancePerday.attendanceCode == 5)).length;
+
+            ///Week Off
+            vm.employees[employeeIndex].numWeeklyOff = (_.filter(vm.employees[employeeIndex].attendance, (attendancePerday) => attendancePerday.attendanceCode == 6)).length;
+
+            //Sunday
+            vm.employees[employeeIndex].numSunday = (_.filter(vm.employees[employeeIndex].attendance, (attendancePerday) => attendancePerday.attendanceCode == 7)).length;
+
+            //Auto Deduct
+            vm.employees[employeeIndex].numAutoDeduct =  vm.employees[employeeIndex].numAbsentDay + (vm.employees[employeeIndex].numLate / 3);
+            
+            //Excpe Grant
+
+            //Final Deduct
+            vm.employees[employeeIndex].numFinalDeduct = vm.employees[employeeIndex].numAutoDeduct - vm.employees[employeeIndex].numExcpeGrant
+
+            //Total Day In Month
+            vm.employees[employeeIndex].numTotalDayInMonth = (_.filter(vm.employees[employeeIndex].attendance, (attendancePerday) => attendancePerday.attendanceCode != 0)).length;;
+
+            //Final Attendance
+            vm.employees[employeeIndex].numFinalAttendance = vm.employees[employeeIndex].numTotalDayInMonth - vm.employees[employeeIndex].numFinalDeduct;
+        }
     }])
     .constant('weekdayAndMonth', {
         weekday: ['Sun', 'Mon', 'Tus', 'Wed', 'Thu', 'Fri', 'Sat'],

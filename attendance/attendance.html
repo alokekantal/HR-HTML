@@ -233,7 +233,7 @@
                         <div class="col-sm-3 col-xs-12">DOJ</div>
                      </div>
                      <div class="panel-group" id="accordion">
-                        <div class="panel panel-default" ng-repeat="attendance in vm.employees">
+                        <div class="panel panel-default" ng-repeat="(employeeIndex, attendance) in vm.employees">
                            <div class="panel-heading">
                               <h4 class="panel-title" style="height: 45px;">
                                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#_{{attendance.empId}}">
@@ -241,58 +241,63 @@
                                     <div class="col-sm-3 col-xs-12" data-ng-bind="attendance.empName"></div>
                                     <div class="col-sm-3 col-xs-12" data-ng-bind="attendance.empDesig"></div>
                                     <div class="col-sm-2 col-xs-12" data-ng-bind="attendance.empStatus"></div>
-                                    <div class="col-sm-3 col-xs-12" data-ng-bind="attendance.empDoj | date: 'MM/dd/yyyy'"></div>
+                                    <div class="col-sm-3 col-xs-12" data-ng-bind="attendance.empDoj | date: 'dd/MM/yyyy'"></div>
                                  </a>
                               </h4>
                            </div>
                            <div id="_{{attendance.empId}}" class="panel-collapse collapse">
-                              <div class="panel-body">
-                                  <div class="col-sm-12">
-                                     <button type="button" class="btn btn-primary  pull-right" ng-click="vm.saveAttendanceForEmnployee(attendance)">
-                                         Save & Regresh
+                              <div class="panel-body">                                 
+                                  <div class="col-sm-11 grid-padding-0">
+                                      <div class="col-sm-12 grid-padding-0">
+                                        <div class="col-sm-2 grid-padding-0">
+                                            <label>Present: </label> {{attendance.numPresentDay}}
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label>Absent: </label> {{attendance.numAbsentDay}}
+                                        </div>
+                                        <div class="col-sm-2 grid-padding-0">
+                                            <label>Holiday: </label> {{attendance.numHoliday}}
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label>Leave: </label> {{attendance.numLeave}}
+                                        </div>
+                                        <div class="col-sm-2 grid-padding-0">
+                                            <label>Late: </label> {{attendance.numLate}}
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label>Week Off: </label> {{attendance.numWeeklyOff}}
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 grid-padding-0">
+                                        <div class="col-sm-2 grid-padding-0">
+                                            <label>Sunday </label> {{attendance.numSunday}}
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label>Auto Deduc.: </label> {{attendance.numAutoDeduct | number: 1}}
+                                        </div>
+                                        <div class="col-sm-2 grid-padding-0">
+                                            <label>Excep. Grant: </label> {{attendance.numExcpeGrant}}
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label>Final Deduc.: </label> {{attendance.numFinalDeduct | number: 1}}
+                                        </div>
+                                        <div class="col-sm-2 grid-padding-0">
+                                            <label>Total: </label> {{attendance.numTotalDayInMonth}}
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label>Final Attend.: </label> {{attendance.numFinalAttendance | number: 1}}
+                                        </div>
+                                    </div>
+                                  </div>
+                                   <div class="col-sm-1 grid-padding-0">
+                                       <!--<img class="pull-right" ng-src="../content/images/saveRefresh-color.png" height="40" width="40">-->
+                                     <button type="button" class="btn btn-primary  pull-right" ng-click="vm.saveAttendanceForEmnployee(attendance)" style="font-size: 12px;">
+                                         Save <br> Refresh
                                      </button>
                                   </div>
-                                 <div class="col-sm-12">
-                                    <div class="col-sm-2">
-                                       <label>Present: </label> {{attendance.numPresentDay}}
-                                    </div>
-                                    <div class="col-sm-2">
-                                       <label>Absent: </label> {{attendance.numAbsentDay}}
-                                    </div>
-                                    <div class="col-sm-2">
-                                       <label>Holiday: </label> {{attendance.numHoliday}}
-                                    </div>
-                                    <div class="col-sm-2">
-                                       <label>Leave: </label> {{attendance.numLeave}}
-                                    </div>
-                                    <div class="col-sm-2">
-                                       <label>Late: </label> {{attendance.numLate}}
-                                    </div>
-                                    <div class="col-sm-2">
-                                       <label>Week Off: </label> {{attendance.numWeeklyOff}}
-                                    </div>
-                                 </div>
-                                 <div class="col-sm-12">
-                                    <div class="col-sm-2">
-                                       <label>Sunday </label> {{attendance.numSunday}}
-                                    </div>
-                                    <div class="col-sm-2">
-                                       <label>Auto Deduction: </label> {{attendance.numAutoDeduct}}
-                                    </div>
-                                    <div class="col-sm-2">
-                                       <label>Exception Grant: </label> {{attendance.numExcpeGrant}}
-                                    </div>
-                                    <div class="col-sm-2">
-                                       <label>Final Deductions: </label> {{attendance.numFinalDeduct}}
-                                    </div>
-                                    <div class="col-sm-2">
-                                       <label>Total: </label> {{attendance.numTotDayInMonth}}
-                                    </div>
-                                    <div class="col-sm-2">
-                                       <label>Final Attendance: </label> {{attendance.numFinalAttendance}}
-                                    </div>
-                                 </div>
-                                 <div class="col-sm-12" style="margin-bottom: 20px;">
+
+                                 
+                                 <div class="col-sm-12 grid-padding-0" style="margin-bottom: 20px;">
                                     <div class="table-responsive">
                                        <table class="table table-striped table-bordered table-hover" style="float: left">
                                           <thead>
@@ -306,7 +311,7 @@
                                           <tbody>
                                              <tr>
                                                 <td ng-repeat="date in attendance.attendance">
-                                                   <select ng-model="date.attendanceCode">
+                                                   <select ng-model="date.attendanceCode" ng-change="vm.calculateStatus(employeeIndex, date.attendanceCode)">
                                                        <option value="0">--Select--</option>
                                                        <option ng-repeat="status in vm.attendanceStatusMaster" value={{status.code}}>{{status.description}}</option>
                                                    </select>
@@ -341,6 +346,7 @@
       <script src="../content/js/moment-with-locales.js"></script>
       <script src="../content/js/angular-moment-picker.min.js"></script>      
       <script src="../content/js/loading-bars.js"></script>
+      <script src="../content/js/lodash.js"></script>
 
       <script src="attendance.controller.js"></script>
       <script src="attendance.service.js"></script>
