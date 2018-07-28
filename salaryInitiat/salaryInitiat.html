@@ -184,7 +184,8 @@
                </div>
                <!-- /.row -->
                <div class="row" style="margin-bottom: 10px;">
-                  <div class="col-sm-4 col-sm-offset-4 col-xs-10">
+                  <div class="form-group col-sm-3">
+                      <label for="email">Year Month:</label>
                      <div class="input-group"
                         change="vm.init()"
                         moment-picker="vm.currentYearMonth"
@@ -199,76 +200,88 @@
                            ng-model-options="{ updateOn: 'blur' }">
                      </div>
                   </div>
+                  <div class="form-group col-sm-3">
+                      <label for="email">Employee Code:</label>
+                      <input type="text" class="form-control" placeholder="Employee code">
+                  </div>
+                  <div class="form-group col-sm-3">
+                      <label for="email">Process:</label>
+                      <input type="text" class="form-control" placeholder="Process">
+                  </div>
+                  <div class="form-group col-sm-3">
+                      <label for="email">Location:</label>
+                      <input type="text" class="form-control" placeholder="Location">
+                  </div>
                </div>
                <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                        <div class="panel panel-default panel-border-color-custom">
-                           <div class="panel-heading panel-header-custom" role="tab" id="headingTwo">
+                        <div class="panel panel-default panel-border-color-custom" ng-repeat="(employeeIndex, employeeSalaryDetail) in vm.employeesSalary">
+                           <div class="panel-heading panel-header-custom" role="tab" id="heading{{employeeIndex}}">
                               <h4 class="panel-title">
-                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#{{employeeSalaryDetail.empId}}" aria-expanded="false" aria-controls="collapseTwo">
                                  <i class="pull-right collapse-icon fa fa-angle-down"></i>
-                                 Ashim Kantal (EMP002)
+                                 {{employeeSalaryDetail.empName}} ({{employeeSalaryDetail.empId}})
                                  </a>
                               </h4>
                            </div>
-                           <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                           <div id="{{employeeSalaryDetail.empId}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{employeeIndex}}">
                               <div class="panel-body">
                                  <form class="form-horizontal" role="form">
                                     <div class="form-group">
                                        <label class="col-sm-2 control-label text-align-left">Process:</label>
                                        <div class="col-sm-2">
-                                          <input type="text" class="form-control">
+                                          <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.process">
                                        </div>
                                        <label class="col-sm-2 control-label text-align-left">Location:</label>
                                        <div class="col-sm-2">
-                                          <input type="text" class="form-control">
+                                          <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.location">
                                        </div>
                                        <label class="col-sm-2 control-label text-align-left">Designation:</label>
                                        <div class="col-sm-2">
-                                          <input type="text" class="form-control">
+                                          <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.empDesig">
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="col-sm-2 control-label text-align-left">EPF No:</label>
                                        <div class="col-sm-2">
-                                          <input type="text" class="form-control">
+                                          <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.epfNo">
                                        </div>
                                        <label class="col-sm-2 control-label text-align-left">UAN:</label>
                                        <div class="col-sm-2">
-                                          <input type="text" class="form-control">
+                                          <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.uan">
                                        </div>
                                        <label class="col-sm-2 control-label text-align-left">ESI No.:</label>
                                        <div class="col-sm-2">
-                                          <input type="text" class="form-control">
+                                          <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.esiNo">
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="col-sm-2 control-label text-align-left">Bank Acc. No.:</label>
                                        <div class="col-sm-2">
-                                          <input type="text" class="form-control">
+                                          <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.bankAccNo">
                                        </div>
                                        <label class="col-sm-2 control-label text-align-left">IFSC code:</label>
                                        <div class="col-sm-2">
-                                          <input type="text" class="form-control">
+                                          <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.ifscCode">
                                        </div>
                                        <label class="col-sm-2 control-label text-align-left">Bank name:</label>
                                        <div class="col-sm-2">
-                                          <input type="text" class="form-control">
+                                          <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.bankName">
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="col-sm-2 control-label text-align-left">Days In Month:</label>
                                        <div class="col-sm-2">
-                                          <input type="text" class="form-control">
+                                          <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.numTotalDayInMonth">
                                        </div>
                                        <label class="col-sm-2 control-label text-align-left">Attendance:</label>
                                        <div class="col-sm-2">
-                                          <input type="text" class="form-control">
+                                          <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.numFinalAttendance">
                                        </div>
                                        <label class="col-sm-2 control-label text-align-left">deduct:</label>
                                        <div class="col-sm-2">
-                                          <input type="text" class="form-control">
+                                          <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.numFinalDeduct">
                                        </div>
                                     </div>
                                     <div class="form-group">
@@ -284,43 +297,43 @@
                                                    <div class="form-group">
                                                       <label class="col-sm-6 control-label text-align-left">Basic:</label>
                                                       <div class="col-sm-6">
-                                                         <input type="text" class="form-control">
+                                                         <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.basic">
                                                       </div>
                                                    </div>
                                                    <div class="form-group">
                                                       <label class="col-sm-6 control-label text-align-left">HRA:</label>
                                                       <div class="col-sm-6">
-                                                         <input type="text" class="form-control">
+                                                         <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.hra">
                                                       </div>
                                                    </div>
                                                    <div class="form-group">
                                                       <label class="col-sm-6 control-label text-align-left">Conv. Allow:</label>
                                                       <div class="col-sm-6">
-                                                         <input type="text" class="form-control">
+                                                         <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.convAllow">
                                                       </div>
                                                    </div>
                                                    <div class="form-group">
                                                       <label class="col-sm-6 control-label text-align-left">Edu. Allow:</label>
                                                       <div class="col-sm-6">
-                                                         <input type="text" class="form-control">
+                                                         <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.educationAllow">
                                                       </div>
                                                    </div>
                                                    <div class="form-group">
                                                       <label class="col-sm-6 control-label text-align-left">Spcl Allow:</label>
                                                       <div class="col-sm-6">
-                                                         <input type="text" class="form-control">
+                                                         <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.specialAllow">
                                                       </div>
                                                    </div>
                                                    <div class="form-group">
                                                       <label class="col-sm-6 control-label text-align-left">Up-Keep Allow:</label>
                                                       <div class="col-sm-6">
-                                                         <input type="text" class="form-control">
+                                                         <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.upKeepAllow">
                                                       </div>
                                                    </div>
                                                    <div class="form-group">
                                                       <label class="col-sm-6 control-label text-align-left">Others/Roff:</label>
                                                       <div class="col-sm-6">
-                                                         <input type="text" class="form-control">
+                                                         <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.others">
                                                       </div>
                                                    </div>
                                                 </div>
@@ -329,31 +342,31 @@
                                                    <div class="form-group">
                                                       <label class="col-sm-6 control-label text-align-left">PF Contr:</label>
                                                       <div class="col-sm-6">
-                                                         <input type="text" class="form-control">
+                                                         <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.pfContr">
                                                       </div>
                                                    </div>
                                                    <div class="form-group">
                                                       <label class="col-sm-6 control-label text-align-left">ESI Contr:</label>
                                                       <div class="col-sm-6">
-                                                         <input type="text" class="form-control">
+                                                         <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.esiContr">
                                                       </div>
                                                    </div>
                                                    <div class="form-group">
                                                       <label class="col-sm-6 control-label text-align-left">Prof. Tax:</label>
                                                       <div class="col-sm-6">
-                                                         <input type="text" class="form-control">
+                                                         <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.profTax">
                                                       </div>
                                                    </div>
                                                    <div class="form-group">
                                                       <label class="col-sm-6 control-label text-align-left">Advance:</label>
                                                       <div class="col-sm-6">
-                                                         <input type="text" class="form-control">
+                                                         <input type="text" class="form-control" ng-model="employeeSalaryDetail.advance">
                                                       </div>
                                                    </div>
                                                    <div class="form-group">
                                                       <label class="col-sm-6 control-label text-align-left">TDS:</label>
                                                       <div class="col-sm-6">
-                                                         <input type="text" class="form-control">
+                                                         <input type="text" class="form-control" ng-model="employeeSalaryDetail.tds">
                                                       </div>
                                                    </div>
                                                 </div>
@@ -362,66 +375,66 @@
                                              <div class="form-group">
                                                 <label class="col-sm-3 control-label text-align-left">Gross Earnings:</label>
                                                 <div class="col-sm-3">
-                                                   <input type="text" class="form-control">
+                                                   <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.grossEarnings">
                                                 </div>
                                                 <label class="col-sm-3 control-label text-align-left">Total Deduction:</label>
                                                 <div class="col-sm-3">
-                                                   <input type="text" class="form-control">
+                                                   <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.totalDeduction">
                                                 </div>
                                              </div>
                                              <!--extra-->
                                              <div class="form-group">
                                                 <label class="col-sm-3 control-label text-align-left">Tele/Inc/others rembursement:</label>
                                                 <div class="col-sm-3">
-                                                   <input type="text" class="form-control">
+                                                   <input type="text" class="form-control" ng-model="employeeSalaryDetail.othersRembursement">
                                                 </div>
                                                 <label class="col-sm-3 control-label text-align-left">Salary In Hand:</label>
                                                 <div class="col-sm-3">
-                                                   <input type="text" class="form-control">
+                                                   <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.salaryInHand">
                                                 </div>
                                              </div>
                                              <div class="clearfix"></div>
                                              <div class="form-group">
                                                 <label class="col-sm-3 control-label text-align-left">Co's Cont. To PF 3.67%:</label>
                                                 <div class="col-sm-3">
-                                                   <input type="text" class="form-control">
+                                                   <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.consCount">
                                                 </div>
                                                 <label class="col-sm-3 control-label text-align-left">Pension Fund 8.33%:</label>
                                                 <div class="col-sm-3">
-                                                   <input type="text" class="form-control">
+                                                   <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.pensionFund">
                                                 </div>
                                              </div>
                                              <div class="form-group">
                                                 <label class="col-sm-3 control-label text-align-left">EDLI 0.5%:</label>
                                                 <div class="col-sm-3">
-                                                   <input type="text" class="form-control">
+                                                   <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.edli">
                                                 </div>
                                                 <label class="col-sm-3 control-label text-align-left">ADM CH 0.65%:</label>
                                                 <div class="col-sm-3">
-                                                   <input type="text" class="form-control">
+                                                   <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.admch">
                                                 </div>
                                              </div>
                                              <div class="form-group">
                                                 <label class="col-sm-3 control-label text-align-left">ADM TO EDLI 0.01%:</label>
                                                 <div class="col-sm-3">
-                                                   <input type="text" class="form-control">
+                                                   <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.admToEdli">
                                                 </div>
                                                 <label class="col-sm-3 control-label text-align-left">Total CO's Cont to EPF 13.61%:</label>
                                                 <div class="col-sm-3">
-                                                   <input type="text" class="form-control">
+                                                   <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.totalCosCountToEpf">
                                                 </div>
                                              </div>
                                              <div class="form-group">
                                                 <label class="col-sm-3 control-label text-align-left">CO'S CONT. TO ESI:</label>
                                                 <div class="col-sm-3">
-                                                   <input type="text" class="form-control">
+                                                   <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.totalCosCountToEsi">
                                                 </div>
                                              </div>
                                              <div class="clearfix"></div>
                                              <div class="form-group">
                                                 <label class="col-sm-3 col-sm-offset-6 control-label text-align-left">CTC:</label>
                                                 <div class="col-sm-3">
-                                                   <input type="text" class="form-control">
+                                                   <input disabled type="text" class="form-control" ng-model="employeeSalaryDetail.ctcPerMonth">
                                                 </div>
                                              </div>
                                              <div class="clearfix"></div>
@@ -436,12 +449,12 @@
                                        </div>
                                     </div>
                                 </form>
-                            </div>
-                        </div>
+                                </div>
+                           </div>
                      </div>
 
                      <!--2nd accordion-->
-                     <div class="panel panel-default panel-border-color-custom">
+                     <!--<div class="panel panel-default panel-border-color-custom">
                            <div class="panel-heading panel-header-custom" role="tab" id="headingTwo">
                               <h4 class="panel-title">
                                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseone" aria-expanded="false" aria-controls="collapseTwo">
@@ -517,7 +530,7 @@
                                                 <div class="col-sm-6 control-label text-align-center">Deduction</div>
                                              </div>
                                              <div class="form-group" style="border-bottom: 1px dotted;">
-                                                <!--Earning-->
+                                                
                                                 <div class="col-sm-6">
                                                    <div class="form-group">
                                                       <label class="col-sm-6 control-label text-align-left">Basic:</label>
@@ -562,7 +575,7 @@
                                                       </div>
                                                    </div>
                                                 </div>
-                                                <!--Deduction-->
+                                                
                                                 <div class="col-sm-6">
                                                    <div class="form-group">
                                                       <label class="col-sm-6 control-label text-align-left">PF Contr:</label>
@@ -596,7 +609,8 @@
                                                    </div>
                                                 </div>
                                              </div>
-                                             <!--total Earning and deduction-->
+
+
                                              <div class="form-group">
                                                 <label class="col-sm-3 control-label text-align-left">Gross Earnings:</label>
                                                 <div class="col-sm-3">
@@ -607,7 +621,7 @@
                                                    <input type="text" class="form-control">
                                                 </div>
                                              </div>
-                                             <!--extra-->
+                                             
                                              <div class="form-group">
                                                 <label class="col-sm-3 control-label text-align-left">Tele/Inc/others rembursement:</label>
                                                 <div class="col-sm-3">
@@ -676,7 +690,7 @@
                                 </form>
                             </div>
                         </div>
-                     </div>
+                     </div>-->
 
 
 
