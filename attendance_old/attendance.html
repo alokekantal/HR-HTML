@@ -24,6 +24,7 @@
       <div class="splash">
          <div class="color-line"></div>
          <div class="splash-title">
+            <h1>Employee Tracker</h1>
             <img src="../content/images/loading-bars.svg" width="64" height="64" />
          </div>
       </div>
@@ -207,7 +208,7 @@
                </div>
                <!-- /.row -->
                <div class="row" style="margin-bottom: 10px;">
-                  <div class="col-sm-4 col-xs-10">
+                  <div class="col-sm-4 col-sm-offset-4 col-xs-10">
                      <div class="input-group"
                         change="vm.init()"
                         moment-picker="vm.currentYearMonth"
@@ -222,23 +223,109 @@
                            ng-model-options="{ updateOn: 'blur' }">
                      </div>
                   </div>
-                  <div class="col-sm-4">
-                      <div class="col-sm-3 grid-padding-0">
-                        <label class="btn-bs-file btn btn-primary">
-                            Browse
-                            <input type="file" fileinput="vm.attendancefile"/>
-                        </label>
-                      </div>
-                      <div class="col-sm-9 grid-padding-0">
-                          <input class="form-control" disabled ng-model="vm.attendancefile.name">
-                      </div>                    
-                </div>
-                <div class="col-sm-2">
-                    <button type="button" class="btn btn-primary pull-right" ng-click="vm.uploadAttendanceExcel()"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp; Upload</button>
-                </div>
-                <div class="col-sm-2">
-                   <button class="btn"><i class="fa fa-download"></i> Download</button>
-               </div> 
+               </div>
+               <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <div class="row row-margin panel-heading bgOrg">
+                        <div class="col-sm-3 col-xs-12">Name</div>
+                        <div class="col-sm-3 col-xs-12">Designation</div>
+                        <div class="col-sm-2 col-xs-12">Status</div>
+                        <div class="col-sm-3 col-xs-12">DOJ</div>
+                     </div>
+                     <div class="panel-group" id="accordion">
+                        <div class="panel panel-default" ng-repeat="(employeeIndex, attendance) in vm.employees">
+                           <div class="panel-heading">
+                              <h4 class="panel-title" style="height: 45px;">
+                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#_{{attendance.empId}}">
+                                    <i class="pull-right collapse-icon fa fa-angle-down"></i>
+                                    <div class="col-sm-3 col-xs-12" data-ng-bind="attendance.empName"></div>
+                                    <div class="col-sm-3 col-xs-12" data-ng-bind="attendance.empDesig"></div>
+                                    <div class="col-sm-2 col-xs-12" data-ng-bind="attendance.empStatus"></div>
+                                    <div class="col-sm-3 col-xs-12" data-ng-bind="attendance.empDoj | date: 'dd/MM/yyyy'"></div>
+                                 </a>
+                              </h4>
+                           </div>
+                           <div id="_{{attendance.empId}}" class="panel-collapse collapse">
+                              <div class="panel-body">                                 
+                                  <div class="col-sm-11 grid-padding-0">
+                                      <div class="col-sm-12 grid-padding-0">
+                                        <div class="col-sm-2 grid-padding-0">
+                                            <label>Present: </label> {{attendance.numPresentDay}}
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label>Absent: </label> {{attendance.numAbsentDay}}
+                                        </div>
+                                        <div class="col-sm-2 grid-padding-0">
+                                            <label>Holiday: </label> {{attendance.numHoliday}}
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label>Leave: </label> {{attendance.numLeave}}
+                                        </div>
+                                        <div class="col-sm-2 grid-padding-0">
+                                            <label>Late: </label> {{attendance.numLate}}
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label>Week Off: </label> {{attendance.numWeeklyOff}}
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 grid-padding-0">
+                                        <div class="col-sm-2 grid-padding-0">
+                                            <label>Sunday </label> {{attendance.numSunday}}
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label>Auto Deduc.: </label> {{attendance.numAutoDeduct | number: 1}}
+                                        </div>
+                                        <div class="col-sm-2 grid-padding-0">
+                                            <label>Excep. Grant: </label> {{attendance.numExcpeGrant}}
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label>Final Deduc.: </label> {{attendance.numFinalDeduct | number: 1}}
+                                        </div>
+                                        <div class="col-sm-2 grid-padding-0">
+                                            <label>Total: </label> {{attendance.numTotalDayInMonth}}
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label>Final Attend.: </label> {{attendance.numFinalAttendance | number: 1}}
+                                        </div>
+                                    </div>
+                                  </div>
+                                   <div class="col-sm-1 grid-padding-0">
+                                       <!--<img class="pull-right" ng-src="../content/images/saveRefresh-color.png" height="40" width="40">-->
+                                     <button type="button" class="btn btn-primary  pull-right" ng-click="vm.saveAttendanceForEmnployee(attendance)" style="font-size: 12px;">
+                                         Save <br> Refresh
+                                     </button>
+                                  </div>
+
+                                 
+                                 <div class="col-sm-12 grid-padding-0" style="margin-bottom: 20px;">
+                                    <div class="table-responsive">
+                                       <table class="table table-striped table-bordered table-hover" style="float: left">
+                                          <thead>
+                                             <tr>
+                                                <th scope="col" ng-repeat="date in vm.dates" style="background-color:#bedee5; text-align: center"> {{date.shortDay}} </th>
+                                             </tr>
+                                             <tr>
+                                                <th scope="col" ng-repeat="date in vm.dates" style="background-color: #5c5e5e; color: white;text-align: center"> {{date.shortDate}} </th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+                                             <tr>
+                                                <td ng-repeat="date in attendance.attendance">
+                                                   <select class="custom-selectbox" ng-model="date.attendanceCode" ng-change="vm.calculateStatus(employeeIndex, date.attendanceCode)">
+                                                       <option value="0">--Select--</option>
+                                                       <option ng-repeat="status in vm.attendanceStatusMaster" value={{status.code}}>{{status.description}}</option>
+                                                   </select>
+                                                </td>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
@@ -263,7 +350,6 @@
 
       <script src="attendance.controller.js"></script>
       <script src="attendance.service.js"></script>
-      <script src="directive.js"></script>
 
       <script src="../common/service.js"></script>
 

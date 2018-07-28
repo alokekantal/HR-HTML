@@ -15,8 +15,39 @@
 
             return deferred.promise;
         }
+
+        var uploadAttendanceExcel = function(currentYearMonth, attendancefile){
+            var deferred = $q.defer();
+            var upl = $http({
+                method: 'POST',
+                url: '', // /api/upload
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                },
+                data: {
+                    currentYearMonth: currentYearMonth,
+                    upload: attendancefile
+                },
+                transformRequest: function(data, headersGetter) {
+                    var formData = new FormData();
+                    angular.forEach(data, function(value, key) {
+                        formData.append(key, value);
+                    });
+                    var headers = headersGetter();
+                    delete headers['Content-Type'];
+                    return formData;
+                }
+            });
+            return upl.then(function(res){
+                 deferred.resolve(res.data);
+            }, function(err){
+                return deferred.reject(res);
+            });
+            return deferred.promise;
+        }
         return {
-            getAttendanceDetailForAllEmpoloyee: getAttendanceDetailForAllEmpoloyee
+            getAttendanceDetailForAllEmpoloyee: getAttendanceDetailForAllEmpoloyee,
+            uploadAttendanceExcel: uploadAttendanceExcel
         }
     }])
 })();
