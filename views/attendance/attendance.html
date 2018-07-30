@@ -207,37 +207,37 @@
                </div>
                <!-- /.row -->
                <div class="row" style="margin-bottom: 10px;">
-                  <div class="col-sm-4 col-xs-10">
+                  <div class="col-sm-3 col-xs-10" style="padding-right: 0px">
                      <div class="input-group"
                         change="vm.init()"
-                        moment-picker="vm.currentYearMonth"
+                        moment-picker="vm.uploadDownloadFilter.currentYearMonth"
                         start-view="month"
                         format="MMMM-YYYY">
                         <span class="input-group-addon">
                         <i class="fa fa-calendar fa-fw"></i>
                         </span>
                         <input class="form-control"
-                           placeholder="Select a date"
-                           ng-model="vm.currentYearMonth"
+                           ng-model="vm.uploadDownloadFilter.currentYearMonth"
                            ng-model-options="{ updateOn: 'blur' }">
                      </div>
                   </div>
-                  <div class="col-sm-4">
-                      <div class="col-sm-3 grid-padding-0">
+                  <div class="col-sm-3">
+                      <input type="text" ng-model="vm.uploadDownloadFilter.process" class="form-control" placeholder="Process">
+                  </div>
+                  <div class="col-sm-3 grid-padding-0">
+                      <div class="col-sm-4 grid-padding-0">
                         <label class="btn-bs-file btn btn-primary">
                             Browse
                             <input type="file" fileinput="vm.attendancefile"/>
                         </label>
                       </div>
-                      <div class="col-sm-9 grid-padding-0">
+                      <div class="col-sm-8 grid-padding-0">
                           <input class="form-control" disabled ng-model="vm.attendancefile.name">
                       </div>                    
                 </div>
-                <div class="col-sm-2">
-                    <button type="button" class="btn btn-primary pull-right" ng-click="vm.uploadAttendanceExcel()"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp; Upload</button>
-                </div>
-                <div class="col-sm-2">
-                   <button class="btn"><i class="fa fa-download"></i> Download</button>
+                <div class="col-sm-3">
+                    <button type="button" class="btn btn-primary pull-left" ng-click="vm.uploadAttendanceExcel()"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp; Upload</button>
+                   <button class="btn pull-right"><i class="fa fa-download"></i> Download</button>
                </div> 
                </div>
             </div>
@@ -263,6 +263,7 @@
 
       <script src="../../assets/attendance/attendance.controller.js"></script>
       <script src="../../assets/attendance/attendance.service.js"></script>
+      <script src="../../assets/attendance/directive.js"></script>
 
       <script src="../../assets/common/service.js"></script>
       <script>

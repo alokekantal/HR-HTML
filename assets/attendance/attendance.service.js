@@ -16,7 +16,7 @@
             return deferred.promise;
         }
 
-        var uploadAttendanceExcel = function(currentYearMonth, attendancefile){
+        var uploadAttendanceExcel = function(uploadDownloadFilter, attendancefile){
             var deferred = $q.defer();
             var upl = $http({
                 method: 'POST',
@@ -25,7 +25,8 @@
                     'Content-Type': 'multipart/form-data'
                 },
                 data: {
-                    currentYearMonth: currentYearMonth,
+                    currentYearMonth: uploadDownloadFilter.currentYearMonth,
+                    process: uploadDownloadFilter.process,
                     upload: attendancefile
                 },
                 transformRequest: function(data, headersGetter) {
