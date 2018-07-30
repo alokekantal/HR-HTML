@@ -5,7 +5,7 @@
         var getEmpoloyeeSalaryDetail = function () {
             var deferred = $q.defer();
             $http({
-                url: '../master/EmployeeSalary.json',
+                url: '../../assets/master/EmployeeSalary.json',
                 method: 'GET'
             }).then(function(res){
                 deferred.resolve(res.data);
