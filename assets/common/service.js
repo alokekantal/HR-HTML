@@ -5,7 +5,7 @@
         var getAttendanceStatusMaster = function () {
             var deferred = $q.defer();
             $http({
-                url: '../master/attendanceMaster.json',
+                url: '../../assets/master/attendanceMaster.json',
                 method: 'GET'
             }).then(function(res){
                 deferred.resolve(res.data);

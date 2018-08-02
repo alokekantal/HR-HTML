@@ -5,7 +5,7 @@
         var getAttendanceDetailForAllEmpoloyee = function () {
             var deferred = $q.defer();
             $http({
-                url: '../master/employeeAttendanceDetail.json',
+                url: '../../assets/master/employeeAttendanceDetail.json',
                 method: 'GET'
             }).then(function(res){
                 deferred.resolve(res.data);
@@ -16,7 +16,7 @@
             return deferred.promise;
         }
 
-        var uploadAttendanceExcel = function(uploadDownloadFilter, attendancefile){
+        var uploadAttendanceExcel = function(uploadParameter){
             var deferred = $q.defer();
             var upl = $http({
                 method: 'POST',
@@ -24,11 +24,7 @@
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },
-                data: {
-                    currentYearMonth: uploadDownloadFilter.currentYearMonth,
-                    process: uploadDownloadFilter.process,
-                    upload: attendancefile
-                },
+                data: uploadParameter,
                 transformRequest: function(data, headersGetter) {
                     var formData = new FormData();
                     angular.forEach(data, function(value, key) {
